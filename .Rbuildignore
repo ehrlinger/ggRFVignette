@@ -18,11 +18,5 @@ jss.cls
 jss.bst
 jsslogo.jpg
 framed.sty
-#^vignettes$/fig-rf$/*
-#^vignettes$/fig-rfs$/*
-#^vignettes/randomForest\.Rmd$
-#^vignettes/Regression-rfsrc\.Rmd$
-#^tests/*
-#^inst/doc/randomForest\.*
-#^inst/doc/Regression-rfsrc*
+
 
