@@ -88,7 +88,7 @@ strCol <- brewer.pal(3, "Set1")[c(2,1,3)]
 
 This vignette is available within the `ggRandomForests` package on the Comprehensive R Archive Network (CRAN) ({)http://cran.r-project.org) [@rcore]. Once the package has been installed, the vignette can be viewed directly from within `R` with the following command:
 ```{r vignette, eval=FALSE, echo=TRUE}
-vignette("randomForestSRC-Regression", package = "ggRandomForests")
+vignette("randomForestSRC-Regression", package = "ggRFVignette")
 ```
 
 A development version of the `ggRandomForests` package is also available on GitHub (https://github.com). We invite comments, feature requests and bug reports for this package at (https://github.com/ehrlinger/ggRandomForests).
