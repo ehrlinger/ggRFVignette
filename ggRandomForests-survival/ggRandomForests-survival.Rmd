@@ -7,6 +7,7 @@ author:
       Second line
     email: john.ehrlinger@gmail.com
     url: https://github.com/ehrlinger/ggRandomForests
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
 title:
   formatted: "\\pkg{ggRandomForests}: Exploring Random Forest Survival"
   # If you use tex in the formatted title, also supply version without
@@ -24,7 +25,7 @@ keywords:
   formatted: [random forest, survival, vimp, minimal depth, "\\proglang{R}", "\\pkg{randomForestSRC}", "\\pkg{ggRandomForests}", "\\pkg{randomForest}"]
   plain:     [random forest, survival, vimp, minimal depth, r, randomForestSRC,ggRandomForests,randomForest]
 preamble: >
-  \usepackage{amssymb,amsmath}
+  \usepackage{amssymb,amsmath, booktabs, longtable}
 bibliography: ggRandomForests.bib
 output: rticles::jss_article
 ---
@@ -250,7 +251,7 @@ colnames(st) <- c("pbc", "pbc.trial")
 kable(st,
       format="latex",
       caption = "Missing value counts in `pbc` data set and pbc clinical trial observations (`pbc.trial`).",
-      digits = 3)
+      digits = 3, booktabs=TRUE)
 ```
 
 Both EDA figures indicate the `pbc` data set contains quite a bit of missing data. Table \ref{T:missing} shows the number of missing values in each variable of the `pbc` data set. Of the `r ncol(pbc)` variables in the data, `r nrow(st)` have missing values. The `pbc` column details variables with missing data in the full `pbc` data set, though there are `r st["treatment", "full"]` patients that were not randomized into the trial. If we restrict the data to the trial only, most of the missing values are also removed, leaving only `r sum(st$pbc.trial>0)` variables with missing values. Therefore, we will focus on the `r nrow(pbc.trial)` observations from the clinical trial for the remainder of this document. We will discuss how \pkg{randomForestSRC} handles missing values in Section \ref{S:imputation}.
@@ -344,20 +345,7 @@ The \pkg{randomForestSRC} `rfsrc` function call grows the forest, determining th
 ```{r rfsrc, echo=TRUE}
 rfsrc_pbc <- rfsrc(Surv(years, status) ~ ., data = pbc.trial,
                    nsplit = 10, na.action = "na.impute", 
-                   tree.err = TRUE)
-```
-
-```{r read-forest, echo=FALSE, results=FALSE, eval=FALSE}
-# in reality, we use data caching to make vignette
-# compilation quicker. The rfsrc_pbc forest is stored
-# as a ggRandomForests data sets
-#
-# This code block produces the R output from the
-# rfsrc grow block above. We set the chunk argument
-# "echo=FALSE" above so this code does not show up
-# in the manuscript.
-data("rfsrc_pbc", package = "ggRFVignette")
-rfsrc_pbc
+                   tree.err = TRUE,importance = TRUE)
 ```
 
 The `print.rfsrc` function returns information on how the random forest was grown. Here the `family = "surv"` forest has `ntree = 1000` trees (the default `ntree` argument). The forest selected from `ceil`$(\sqrt{p=17}) = 5$ randomly selected candidate variables for splitting at each node, stopping when a terminal node contained three or fewer observations. For continuous variables, we used a random logrank split rule, which randomly selects from `nsplit = 10` split point values, instead of optimizing over all possible values.
@@ -420,12 +408,6 @@ rfsrc_pbc_test <- predict(rfsrc_pbc, newdata = pbc.test,
                           importance = TRUE)
 ```
 
-```{r predict-load, echo=FALSE, eval=FALSE}
-# Predict survival for 106 patients not in randomized trial
-data("rfsrc_pbc_test", package="ggRandomForests")
-# Print prediction summary
-rfsrc_pbc_test
-```
 
 The forest summary indicates there are 106 test set observations with 36 deaths and the predicted error rate is $19.1\%$. We plot the predicted survival just as we did the training set estimates.
 
@@ -484,12 +466,6 @@ The \pkg{randomForestSRC} `var.select` function uses the minimal depth methodolo
 varsel_pbc <- var.select(rfsrc_pbc)
 gg_md <- gg_minimal_depth(varsel_pbc, lbls = st.labs)
 print(gg_md)
-```
-
-```{r mindepth-load, eval=FALSE}
-data("varsel_pbc", package = "ggRandomForests")
-gg_md <- gg_minimal_depth(varsel_pbc)
-gg_md
 ```
 
 The `gg_minimal_depth` summary mostly reproduces the output from the `var.select` function from the \pkg{randomForestSRC} package. We report the minimal depth threshold (`threshold` `r round(gg_md$md.obj$threshold, digits=3)`) and the number of variables with depth below that threshold (`model size` `r gg_md$modelsize`). We also list a table of the top (`r gg_md$modelsize`) selected variables, in minimal depth rank order with the associated VIMP measures. The minimal depth numbers indicate that `bili` tends to split between the first and second node level, and the next three variables (`albumin`, `copper`, `prothrombin`) split between the second and third levels on average.
@@ -638,17 +614,16 @@ For time to event data, we also have to deal with the additional time dimension,
 
 ```{r pbc-partial, echo=TRUE}
 xvar <- c(xvar, xvar.cat)
-partial_pbc <- mclapply(c(1,3,5), function(tm){
-  plot.variable(rfsrc_pbc, surv.type = "surv", time = tm, xvar.names = xvar,
-                partial = TRUE, show.plots = FALSE)
+partial_pbc <- mclapply(rfsrc_pbc$time.interest[c(which(rfsrc_pbc$time.interest > 1)[1]-1,  
+                          which(rfsrc_pbc$time.interest > 3)[1]-1,  
+                          which(rfsrc_pbc$time.interest > 5)[1]-1)],
+                        function(tm){
+                          plot.variable(rfsrc_pbc, surv.type = "surv", 
+                                        partial.time = tm, xvar.names = xvar,
+                                        partial = TRUE, show.plots = FALSE)
   })
 ```
 
-
-```{r pbc-partial-load, eval=FALSE}
-data("partial_pbc", package = "ggRandomForests")
-xvar <- c(xvar, xvar.cat)
-```
 
 Because partial dependence data is collapsed onto the risk adjusted response, we can show multiple time curves on a single panel. The following code block converts the `plot.variable` output into a list of `gg_partial` objects, and then combines these data objects, with descriptive labels, along each variable of interest using the `combine.gg_partial` function.
 
@@ -1002,8 +977,6 @@ A development version of the \pkg{ggRandomForests} package is also available on 
 
 This work was supported in part by the National Institutes of Health grant R01-HL103552-01A1.
 
-# References
-
 \appendix
 
 # Source Code
@@ -1198,3 +1171,5 @@ st <- lapply(indx, function(ind){
           add=TRUE, col="blue", lwd=6)})
 
 ```
+
+# References

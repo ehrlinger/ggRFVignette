@@ -850,9 +850,9 @@ R+   labs(fill = "VIMP > 0")
 
 The \texttt{gg\_vimp} plot of Figure \ref{fig:rf-vimp} details VIMP
 ranking for the \texttt{pbc.trial} baseline variables, from the largest
-(Serum Bilirubin) at the top, to smallest (Platelets per cubic ml/1000)
-at the bottom. VIMP measures are shown using bars to compare the scale
-of the error increase under permutation and colored by the sign of the
+(Serum Bilirubin) at the top, to smallest (Treament (DPCA, Placebo)) at
+the bottom. VIMP measures are shown using bars to compare the scale of
+the error increase under permutation and colored by the sign of the
 measure (red for negative values). Note that four of the five highest
 ranking variables by VIMP match those selected by the(Fleming and
 Harrington 1991) model listed in Table \ref{T:FHmodel}, with urine
@@ -915,27 +915,26 @@ nsplit             : 10
 mtry               : 5 
 nodesize           : 3 
 refitted forest    : FALSE 
-model size         : 14 
-depth threshold    : 6.7451 
-PE (true OOB)      : 16.426 
+model size         : 13 
+depth threshold    : 6.7423 
+PE (true OOB)      : 16.398 
 
 
 Top variables:
             depth vimp
-bili        1.802   NA
-albumin     2.521   NA
-copper      2.737   NA
-prothrombin 2.938   NA
-platelet    3.264   NA
-chol        3.278   NA
-edema       3.339   NA
-age         3.677   NA
-sgot        3.719   NA
-alk         4.104   NA
-trig        4.528   NA
-ascites     5.228   NA
-stage       5.290   NA
-hepatom     6.656   NA
+bili        1.676   NA
+albumin     2.475   NA
+copper      2.824   NA
+prothrombin 2.949   NA
+edema       3.097   NA
+chol        3.378   NA
+platelet    3.387   NA
+age         3.584   NA
+sgot        3.701   NA
+alk         3.993   NA
+trig        4.558   NA
+stage       5.257   NA
+ascites     5.720   NA
 -----------------------------------------------------------
 \end{Soutput}
 \begin{Sinput}
@@ -945,28 +944,27 @@ R> print(gg_md)
 \begin{Soutput}
 -----------------------------------------------------------
 gg_minimal_depth
-model size         : 14 
-depth threshold    : 6.7451 
+model size         : 13 
+depth threshold    : 6.7423 
 
-PE :[1] 16.426
+PE :[1] 16.398
 -----------------------------------------------------------
 
 Top variables:
             depth vimp
-bili         1.80   NA
-albumin      2.52   NA
-copper       2.74   NA
-prothrombin  2.94   NA
-platelet     3.26   NA
-chol         3.28   NA
-edema        3.34   NA
-age          3.68   NA
-sgot         3.72   NA
-alk          4.10   NA
-trig         4.53   NA
-ascites      5.23   NA
-stage        5.29   NA
-hepatom      6.66   NA
+bili         1.68   NA
+albumin      2.48   NA
+copper       2.82   NA
+prothrombin  2.95   NA
+edema        3.10   NA
+chol         3.38   NA
+platelet     3.39   NA
+age          3.58   NA
+sgot         3.70   NA
+alk          3.99   NA
+trig         4.56   NA
+stage        5.26   NA
+ascites      5.72   NA
 -----------------------------------------------------------
 \end{Soutput}
 \end{Schunk}
@@ -974,8 +972,8 @@ hepatom      6.66   NA
 The \texttt{gg\_minimal\_depth} summary mostly reproduces the output
 from the \texttt{var.select} function from the \pkg{randomForestSRC}
 package. We report the minimal depth threshold (\texttt{threshold}
-6.745) and the number of variables with depth below that threshold
-(\texttt{model\ size} 14). We also list a table of the top (14) selected
+6.742) and the number of variables with depth below that threshold
+(\texttt{model\ size} 13). We also list a table of the top (13) selected
 variables, in minimal depth rank order with the associated VIMP
 measures. The minimal depth numbers indicate that \texttt{bili} tends to
 split between the first and second node level, and the next three
@@ -1046,31 +1044,29 @@ Variable & FH & Min depth & VIMP\\
 \hline
 bili & 1 & 1 & 1\\
 \hline
-albumin & 2 & 2 & 6\\
+albumin & 2 & 2 & 5\\
 \hline
-copper & NA & 3 & 2\\
+copper & NA & 3 & 3\\
 \hline
 prothrombin & 4 & 4 & 4\\
 \hline
-platelet & NA & 5 & 17\\
+edema & 5 & 5 & 2\\
 \hline
 chol & NA & 6 & 10\\
 \hline
-edema & 5 & 7 & 3\\
+platelet & NA & 7 & 16\\
 \hline
 age & 3 & 8 & 7\\
 \hline
 sgot & NA & 9 & 8\\
 \hline
-alk & NA & 10 & 13\\
+alk & NA & 10 & 15\\
 \hline
-trig & NA & 11 & 15\\
+trig & NA & 11 & 14\\
 \hline
-ascites & NA & 12 & 5\\
+stage & NA & 12 & 9\\
 \hline
-stage & NA & 13 & 9\\
-\hline
-hepatom & NA & 14 & 11\\
+ascites & NA & 13 & 6\\
 \hline
 \end{tabular}
 \end{table}
@@ -1089,7 +1085,7 @@ survival, and overall, the minimal depth and VIMP rankings agree
 reasonably well with the(Fleming and Harrington 1991) model.
 
 The minimal depth selection process reduced the number of variables of
-interest from\textasciitilde{}17 to 14, which is still a rather large
+interest from\textasciitilde{}17 to 13, which is still a rather large
 subset of interest. An obvious selection set is to examine the five
 variables selected by(Fleming and Harrington 1991). Combining the
 Minimal Depth and(Fleming and Harrington 1991) model, there may be
@@ -1566,42 +1562,42 @@ R>  ggint <- gg_interaction(rfsrc_pbc)
                     No. of variables: 17
   Variables sorted by minimal depth?: TRUE
 
-            bili albumin copper prothrombin platelet chol edema  age sgot  alk trig
-bili        0.12    0.27   0.29        0.28     0.29 0.27  0.51 0.26 0.32 0.32 0.34
-albumin     0.32    0.17   0.37        0.38     0.38 0.38  0.64 0.36 0.39 0.40 0.41
-copper      0.33    0.35   0.18        0.38     0.39 0.39  0.64 0.37 0.40 0.40 0.43
-prothrombin 0.37    0.40   0.42        0.20     0.45 0.42  0.67 0.40 0.45 0.44 0.47
-platelet    0.50    0.50   0.52        0.54     0.22 0.52  0.79 0.49 0.56 0.54 0.57
-chol        0.42    0.44   0.45        0.47     0.48 0.22  0.76 0.44 0.48 0.46 0.51
-edema       0.44    0.47   0.48        0.50     0.49 0.50  0.22 0.49 0.51 0.50 0.55
-age         0.42    0.43   0.46        0.47     0.47 0.47  0.79 0.25 0.47 0.45 0.49
-sgot        0.47    0.48   0.50        0.51     0.52 0.53  0.79 0.50 0.25 0.51 0.52
-alk         0.54    0.58   0.58        0.60     0.58 0.59  0.85 0.56 0.60 0.27 0.61
-trig        0.52    0.54   0.57        0.59     0.57 0.59  0.85 0.54 0.57 0.57 0.30
-ascites     0.53    0.58   0.57        0.58     0.57 0.58  0.74 0.57 0.60 0.60 0.60
-stage       0.58    0.61   0.61        0.63     0.64 0.64  0.85 0.61 0.64 0.64 0.65
-hepatom     0.67    0.70   0.72        0.73     0.73 0.71  0.88 0.71 0.72 0.71 0.74
-spiders     0.80    0.81   0.82        0.83     0.84 0.84  0.94 0.83 0.82 0.81 0.85
-treatment   0.88    0.89   0.88        0.88     0.88 0.89  0.97 0.89 0.88 0.88 0.89
-sex         0.84    0.86   0.86        0.87     0.87 0.86  0.96 0.86 0.86 0.86 0.87
-            ascites stage hepatom spiders treatment  sex
-bili           0.69  0.44    0.61    0.63      0.61 0.68
-albumin        0.80  0.54    0.67    0.70      0.66 0.75
-copper         0.80  0.54    0.67    0.69      0.67 0.77
-prothrombin    0.82  0.63    0.73    0.74      0.71 0.78
-platelet       0.89  0.70    0.81    0.82      0.77 0.87
-chol           0.87  0.64    0.77    0.76      0.74 0.82
-edema          0.81  0.64    0.73    0.75      0.75 0.80
-age            0.89  0.64    0.78    0.76      0.73 0.84
-sgot           0.90  0.66    0.78    0.80      0.76 0.83
-alk            0.94  0.74    0.84    0.85      0.79 0.90
-trig           0.93  0.72    0.84    0.84      0.79 0.88
-ascites        0.35  0.70    0.77    0.79      0.80 0.83
-stage          0.93  0.35    0.83    0.85      0.82 0.89
-hepatom        0.93  0.81    0.44    0.88      0.86 0.91
-spiders        0.97  0.88    0.93    0.52      0.91 0.94
-treatment      0.99  0.93    0.96    0.96      0.55 0.97
-sex            0.97  0.90    0.94    0.95      0.93 0.61
+            bili albumin copper prothrombin edema chol platelet  age sgot  alk trig stage
+bili        0.11    0.25   0.28        0.29  0.48 0.28     0.30 0.26 0.30 0.30 0.35  0.44
+albumin     0.32    0.17   0.37        0.37  0.65 0.37     0.38 0.36 0.38 0.39 0.42  0.57
+copper      0.34    0.38   0.19        0.39  0.65 0.40     0.40 0.38 0.40 0.42 0.44  0.56
+prothrombin 0.39    0.41   0.41        0.20  0.68 0.43     0.46 0.42 0.43 0.44 0.48  0.61
+edema       0.42    0.44   0.47        0.47  0.21 0.49     0.48 0.46 0.49 0.49 0.51  0.62
+chol        0.40    0.44   0.46        0.47  0.75 0.23     0.47 0.44 0.49 0.45 0.51  0.65
+platelet    0.49    0.52   0.52        0.56  0.81 0.55     0.23 0.54 0.53 0.53 0.57  0.69
+age         0.42    0.43   0.44        0.48  0.80 0.46     0.48 0.24 0.46 0.46 0.48  0.63
+sgot        0.48    0.47   0.50        0.52  0.80 0.51     0.50 0.49 0.25 0.52 0.54  0.68
+alk         0.55    0.57   0.57        0.56  0.85 0.58     0.58 0.55 0.57 0.27 0.62  0.73
+trig        0.57    0.56   0.58        0.63  0.86 0.59     0.58 0.56 0.58 0.59 0.31  0.73
+stage       0.59    0.62   0.61        0.63  0.83 0.64     0.65 0.61 0.64 0.63 0.66  0.35
+ascites     0.57    0.59   0.60        0.61  0.79 0.61     0.62 0.61 0.61 0.62 0.65  0.73
+hepatom     0.72    0.72   0.71        0.74  0.89 0.72     0.75 0.72 0.72 0.73 0.75  0.82
+spiders     0.82    0.82   0.81        0.82  0.94 0.81     0.84 0.81 0.82 0.82 0.82  0.89
+treatment   0.87    0.87   0.88        0.86  0.96 0.88     0.88 0.87 0.88 0.88 0.89  0.93
+sex         0.85    0.84   0.86        0.86  0.96 0.86     0.87 0.85 0.84 0.86 0.87  0.91
+            ascites hepatom spiders treatment  sex
+bili           0.66    0.59    0.60      0.59 0.67
+albumin        0.79    0.66    0.67      0.67 0.72
+copper         0.80    0.68    0.68      0.68 0.78
+prothrombin    0.82    0.74    0.75      0.71 0.78
+edema          0.79    0.72    0.72      0.74 0.78
+chol           0.86    0.78    0.76      0.75 0.83
+platelet       0.90    0.81    0.82      0.78 0.86
+age            0.88    0.76    0.74      0.72 0.81
+sgot           0.89    0.77    0.79      0.75 0.81
+alk            0.94    0.84    0.83      0.81 0.87
+trig           0.93    0.84    0.83      0.80 0.88
+stage          0.93    0.84    0.83      0.81 0.88
+ascites        0.38    0.80    0.82      0.81 0.85
+hepatom        0.93    0.46    0.89      0.87 0.91
+spiders        0.95    0.92    0.51      0.91 0.95
+treatment      0.99    0.95    0.96      0.55 0.97
+sex            0.97    0.94    0.94      0.93 0.60
 \end{Soutput}
 \end{Schunk}
 
@@ -1999,8 +1995,6 @@ feature requests and bug reports for this package at
 This work was supported in part by the National Institutes of Health
 grant R01-HL103552-01A1.
 
-\section{References}\label{references}
-
 \appendix
 
 \section{Source Code}\label{source-code}
@@ -2046,6 +2040,9 @@ In Section \ref{S:partialSurface}, we generate a partial dependence
 surface of one year survival dependence on both \texttt{bili} and
 \texttt{albumin} variables. We include the Source code for generating
 Figure \ref{fig:surface3d} here.
+
+\section*{References}\label{references}
+\addcontentsline{toc}{section}{References}
 
 \hypertarget{refs}{}
 \hypertarget{ref-rcore}{}
