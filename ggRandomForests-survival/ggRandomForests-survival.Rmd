@@ -25,7 +25,7 @@ keywords:
   formatted: [random forest, survival, vimp, minimal depth, "\\proglang{R}", "\\pkg{randomForestSRC}", "\\pkg{ggRandomForests}", "\\pkg{randomForest}"]
   plain:     [random forest, survival, vimp, minimal depth, r, randomForestSRC,ggRandomForests,randomForest]
 preamble: >
-  \usepackage{amssymb,amsmath, booktabs, longtable}
+  \usepackage{amssymb, amsmath, booktabs, longtable}
 bibliography: ggRandomForests.bib
 output: rticles::jss_article
 ---
@@ -35,7 +35,7 @@ output: rticles::jss_article
 library("knitr")
 knitr::render_sweave()
 # set global chunk options for knitr. These can be changed in the header for each individual R code chunk
-opts_chunk$set(fig.path = 'fig-rfs/rfs-',
+opts_chunk$set(fig.path = 'rfs-',
                fig.align = 'center',
                fig.pos = "!htb",
                fig.show = 'hold',
@@ -49,17 +49,15 @@ opts_chunk$set(fig.path = 'fig-rfs/rfs-',
                results = FALSE,
                message = FALSE,
                warning = FALSE,
-               error = FALSE,
-               dev = 'pdf', prompt = TRUE)
+               error = FALSE)
 
 # Setup the R environment
 options(object.size = Inf, expressions = 100000, memory = Inf,
-        replace.assign = TRUE, width = 90, prompt = "R> ")
+        replace.assign = TRUE, width = 75, prompt = "R> ")
 options(mc.cores = 1, rf.cores = 0, stringsAsFactors = FALSE)
 ```
 
 # Introduction
-
 
 Random forest [@Breiman:2001] (RF) is a non-parametric statistical method which requires no distributional assumptions on covariate relation to the response. RF is a robust, nonlinear technique that optimizes predictive accuracy by fitting an ensemble of trees to stabilize model estimates. Random Survival Forest (RSF) [@Ishwaran:2007a;@Ishwaran:2008] is an extension of Breiman's RF techniques to survival settings, allowing efficient non-parametric analysis of time to event data. The \pkg{randomForestSRC} package (http://CRAN.R-project.org/package=randomForestSRC) [@Ishwaran:RFSRC:2014] is a unified treatment of Breiman's random forest for survival, regression and classification problems.
 
@@ -197,7 +195,7 @@ kable(tmp,
 
 It is good practice to view your data before beginning analysis. Exploratory Data Analysis (EDA) [@Tukey:1977] will help you to understand the data, and find outliers, missing values and other data anomalies within each variable before getting deep into the analysis. To this end, we use \pkg{ggplot2} figures with the `facet_wrap` function to create two sets of panel plots, one of histograms for categorical variables  (Figure \ref{fig:categoricalEDA}), and another of scatter plots for continuous variables (Figure \ref{fig:continuousEDA}). Variables are plotted along a continuous variable on the X-axis to separate the individual observations.
 
-``` {r categoricalEDA, fig.cap="EDA plots for categorical variables (logicals and factors). Bars indicate number of patients within 1 year of followup interval for each categorical variable. Colors correspond to class membership within each variable. Missing values are included in white.", fig.width=7}
+``` {r categoricalEDA, fig.width=7, fig.cap="EDA plots for categorical variables (logicals and factors). Bars indicate number of patients within 1 year of followup interval for each categorical variable. Colors correspond to class membership within each variable. Missing values are included in white."}
 ## Not displayed ##
 # Use tidyr::gather to transform the data into long format.
 cnt <- c(which(cls == "numeric" ), which(cls == "integer"))
@@ -389,7 +387,7 @@ The `gg_rfsrc` plot of Figure \ref{fig:rfsrc-mean2} shows the median survival wi
 
 ## Random forest imputation
 
-There are two modeling issues when dealing with missing data values: ``How does the algorithm build a model when values are missing from the training data?'', and ``How does the algorithm predict a response when values are missing from the test data?''. The standard procedure for linear models is to either remove or impute the missing data values before modelling. Removing the missingness is done by either removing the variable with missing values (column wise) or removing the observations (row wise). Removal is a simple solution, but may bias results when either observations or variables are scarce.
+There are two modeling issues when dealing with missing data values: ``How does the algorithm build a model when values are missing from the training data?``, and ``How does the algorithm predict a response when values are missing from the test data?``. The standard procedure for linear models is to either remove or impute the missing data values before modelling. Removing the missingness is done by either removing the variable with missing values (column wise) or removing the observations (row wise). Removal is a simple solution, but may bias results when either observations or variables are scarce.
 
 The \pkg{randomForestSRC} package imputes missing values using \emph{adaptive tree imputation} [@Ishwaran:2008]. Rather than impute missing values before growing the forest, the algorithm takes a ``just--in--time'' approach. At each node split, the set of `mtry` candidate variables is checked for missing values. Missing values are then imputed by randomly drawing values from non-missing data within the node. The split-statistic is then calculated on observations that were not missing values. The imputed values are used to sort observations into the subsequent daughter nodes and then discarded before the next split occurs. The process is repeated until the stopping criteria is reached and all observations are sorted into terminal nodes.
 
@@ -465,7 +463,7 @@ The \pkg{randomForestSRC} `var.select` function uses the minimal depth methodolo
 ```{r mindepth-view, echo=TRUE}
 varsel_pbc <- var.select(rfsrc_pbc)
 gg_md <- gg_minimal_depth(varsel_pbc, lbls = st.labs)
-print(gg_md)
+# print(gg_md)
 ```
 
 The `gg_minimal_depth` summary mostly reproduces the output from the `var.select` function from the \pkg{randomForestSRC} package. We report the minimal depth threshold (`threshold` `r round(gg_md$md.obj$threshold, digits=3)`) and the number of variables with depth below that threshold (`model size` `r gg_md$modelsize`). We also list a table of the top (`r gg_md$modelsize`) selected variables, in minimal depth rank order with the associated VIMP measures. The minimal depth numbers indicate that `bili` tends to split between the first and second node level, and the next three variables (`albumin`, `copper`, `prothrombin`) split between the second and third levels on average.
@@ -557,7 +555,7 @@ plot(gg_v, xvar = "bili", alpha = 0.4) + #, se=FALSE
   coord_cartesian(ylim = c(-0.01, 1.01))
 ```
 
-The `gg_variable plot of Figure \ref{fig:variable-plotbili} shows variable dependence for the Serum Bilirubin (`bili`) variable. Again censored cases are shown as blue circles, events are indicated by the red `x' symbols. Each predicted point is dependent on the full combination of all other covariates, not only on the covariate displayed in the dependence plot. The smooth loess line [@cleveland:1981; @cleveland:1988] indicates the trend of the prediction over the change in the variable.
+The `gg_variable` plot of Figure \ref{fig:variable-plotbili} shows variable dependence for the Serum Bilirubin (`bili`) variable. Again censored cases are shown as blue circles, events are indicated by the red `x` symbols. Each predicted point is dependent on the full combination of all other covariates, not only on the covariate displayed in the dependence plot. The smooth loess line [@cleveland:1981; @cleveland:1988] indicates the trend of the prediction over the change in the variable.
 
 Examination of Figure \ref{fig:variable-plotbili} indicates most of the cases are grouped in the lower end of `bili` values. We also see that most of the higher values experienced an event. The ``normal'' range of Bilirubin is from 0.3 to 1.9 mg/dL, indicating the distribution from our population is well outside the normal range. These values make biological sense considering Bilirubin is a pigment created in the liver, the organ effected by the PBC disease. The figure also shows that the risk of death increases as time progresses. The risk at 3 years is much greater than that at 1 year for patients with high Bilirubin values compared to those with values closer to the normal range.
 
@@ -569,7 +567,7 @@ An additional `plot.gg_variable` argument (`panel = TRUE`) can be used to combin
 xvar <- c("bili", "albumin", "copper", "prothrombin", "age")
 xvar.cat <- c("edema")
 
-plot(gg_v, xvar = xvar[-1], panel = TRUE, alpha = 0.4) + #se = FALSE, span=1
+plot(gg_v, xvar = xvar[-1], panel = TRUE, alpha = 0.4) +
   labs(y = "Survival") +
   theme(legend.position = "none") +
   scale_color_manual(values = strCol, labels = event.labels) +
@@ -614,14 +612,17 @@ For time to event data, we also have to deal with the additional time dimension,
 
 ```{r pbc-partial, echo=TRUE}
 xvar <- c(xvar, xvar.cat)
-partial_pbc <- mclapply(rfsrc_pbc$time.interest[c(which(rfsrc_pbc$time.interest > 1)[1]-1,  
-                          which(rfsrc_pbc$time.interest > 3)[1]-1,  
-                          which(rfsrc_pbc$time.interest > 5)[1]-1)],
+
+time_index <- c(which(rfsrc_pbc$time.interest > 1)[1]-1,  
+                which(rfsrc_pbc$time.interest > 3)[1]-1,  
+                which(rfsrc_pbc$time.interest > 5)[1]-1)
+partial_pbc <- mclapply(rfsrc_pbc$time.interest[time_index],
                         function(tm){
                           plot.variable(rfsrc_pbc, surv.type = "surv", 
-                                        partial.time = tm, xvar.names = xvar,
-                                        partial = TRUE, show.plots = FALSE)
-  })
+                                        time = tm, xvar.names = xvar,
+                                        partial = TRUE , 
+                                        show.plots = FALSE)
+                        })
 ```
 
 
@@ -666,7 +667,7 @@ It is instructive to see a more detailed map of the risk adjusted response to ge
 
 For this exercise, we will generate a series of 50 `gg_partial` plot curves for the `bili` variable. To fill the surface in, we also increased the number of points along the distribution of `bili` to `npts=50` to create a grid of $50 \times 50$ risk adjusted estimates of survival along time in one dimension and the `bili` variable in the second.
 
-```{r timeSurface3d, fig.cap="Partial dependence surface. Partial dependence of predicted survival (0 to 5 years) as a function of bili. Blue lines indicate partial dependence at 1 and 3 years, as in bili panel of Figure~\\ref{fig:pbc-partial-panel}.", fig.width=7, fig.height=5, echo=FALSE}
+```{r timeSurface3d, fig.cap="Partial dependence surface. Partial dependence of predicted survival (0 to 5 years) as a function of bili. Blue lines indicate partial dependence at 1 and 3 years, as in bili panel of Figure~\\ref{fig:pbc-partial-panel}.", fig.width=7, fig.height=5, echo=FALSE, eval=FALSE}
 # Restrict the time of interest to less than 5 years.
 time_pts <- rfsrc_pbc$time.interest[which(rfsrc_pbc$time.interest<=5)]
 
@@ -733,12 +734,7 @@ Using minimal depth, it is also possible to calculate measures of pairwise inter
 The `randomForestSRC::find.interaction` function traverses the forest, calculating all pairwise minimal depth interactions, and returns a $p \times p$ matrix of interaction measures. The diagonal terms are normalized to the root node, and off diagonal terms are normalized measures of pairwise variable interaction.
 
 ```{r interaction-show, echo=TRUE}
- ggint <- gg_interaction(rfsrc_pbc)
-```
-
-```{r interaction, eval=FALSE}
- data(interaction_pbc, package = "ggRandomForests")
- ggint <- gg_interaction(interaction_pbc)
+ggint <- gg_interaction(rfsrc_pbc)
 ```
 
 The `gg_interaction ` function wraps the `find.interaction ` matrix for use with the \pkg{ggRandomForests} plot and print functions. The `xvar` argument is used to restrict the variables of interest and the `panel = TRUE` argument displays the results in a single figure.
@@ -849,7 +845,7 @@ By characterizing conditional plots as stratified variable dependence plots, the
 
 The following code block will generate the data object for creating partial dependence coplot of 1 year survival as a function of `bili` conditional on membership within the 6 groups of `albumin` intervals that we examined in the Figure \ref{fig:albumin-coplot}.
 
-```{r build-bili-albumin,echo=TRUE}
+```{r build-bili-albumin,echo=TRUE, eval=FALSE}
 partial_coplot_pbc <- gg_partial_coplot(rfsrc_pbc, xvar = "bili",
                                          groups = ggvar$albumin_grp,
                                          surv_type = "surv",
@@ -857,13 +853,8 @@ partial_coplot_pbc <- gg_partial_coplot(rfsrc_pbc, xvar = "bili",
                                          show.plots = FALSE)
 ```
 
-```{r load-pbc-coplot, echo=FALSE, eval=FALSE}
-# Load cached partial plot data
-data("partial_coplot_pbc", package = "ggRandomForests")
-```
-
-```{r bili-albumin, fig.cap="Partial dependence coplot of survival at 1 year against bili, conditional on albumin interval group membership. Points estimates with loess smooth to indicate trend within each group.", fig.width=7, fig.height=4, echo=TRUE}
-ggplot(partial_coplot_pbc, aes(x=bili, y=yhat, col=group, shape=group)) + #
+```{r bili-albumin, fig.cap="Partial dependence coplot of survival at 1 year against bili, conditional on albumin interval group membership. Points estimates with loess smooth to indicate trend within each group.", fig.width=7, fig.height=4, echo=TRUE, eval=FALSE}
+ggplot(partial_coplot_pbc, aes(x=bili, y=yhat, col=group, shape=group)) +
   geom_smooth(se = FALSE) +
   labs(x = st.labs["bili"], y = "Survival at 1 year (%)",
        color = "albumin", shape = "albumin")
@@ -873,7 +864,7 @@ The \code{gg_partial_coplot} of Figure \ref{fig:bili-albumin} shows point estima
 
 For completeness, we construct the compliment coplot view of one year survival as a function of `albumin` conditional on `bili` interval group membership in Figure \ref{fig:albumin-bili}. We list the source code for this figure in Appendix \ref{A:biliPartialCoplot}.
 
-```{r albumin-bili, fig.cap="Partial dependence coplot of survival at 1 year against albumin, conditional on bili interval group membership. Points estimates with loess smooth to indicate trend within each group.", fig.width=7, fig.height=4, echo=FALSE}
+```{r albumin-bili, fig.cap="Partial dependence coplot of survival at 1 year against albumin, conditional on bili interval group membership. Points estimates with loess smooth to indicate trend within each group.", fig.width=7, fig.height=4, echo=FALSE, eval=FALSE}
 # Load cached partial plot data
 data("partial_coplot_pbc2", package = "ggRandomForests")
 
@@ -891,7 +882,7 @@ Just as in partial dependence, we can view the partial coplot curves as slices a
 
 A difficulty with conditional dependence for this exercise is the reduction of the sample sizes for calculating a coplot surface. So instead, we calculate the full partial dependence surface by generating 50 `albumin` values spaced evenly along the data distribution. For each value of `albumin`, we calculate the partial dependence on `bili` at `npts = 50` points with the `plot.variable` function. We generate the surface again using the `surf3D` function.
 
-```{r surface3d, fig.cap="Partial dependence surface of survival at 1 year as a funtion of bili and albumin. Blue lines indicate partial coplot cut points for albumin (Figure~\\ref{fig:bili-albumin}) and bili (Figure~\\ref{fig:albumin-bili}).", fig.width=7, fig.height=5, echo=FALSE}
+```{r surface3d, fig.cap="Partial dependence surface of survival at 1 year as a funtion of bili and albumin. Blue lines indicate partial coplot cut points for albumin (Figure~\\ref{fig:bili-albumin}) and bili (Figure~\\ref{fig:albumin-bili}).", fig.width=7, fig.height=5, echo=FALSE, eval=FALSE}
 # Find the quantile points to create 50 cut points
 alb_partial_pts <-quantile_pts(ggvar$albumin, groups = 50)
 
