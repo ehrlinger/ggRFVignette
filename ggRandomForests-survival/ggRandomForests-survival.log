@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.12.27)  27 DEC 2016 13:56
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.12.27)  28 DEC 2016 15:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -725,27 +725,27 @@ Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
 (./ggRandomForests-survival.aux)
 \openout1 = `ggRandomForests-survival.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 71.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 71.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 73.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 73.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -776,7 +776,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box34
-Package hyperref Info: Link coloring ON on input line 71.
+Package hyperref Info: Link coloring ON on input line 73.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -786,128 +786,75 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count129
 )
-LaTeX Info: Redefining \ref on input line 71.
-LaTeX Info: Redefining \pageref on input line 71.
-LaTeX Info: Redefining \nameref on input line 71.
+LaTeX Info: Redefining \ref on input line 73.
+LaTeX Info: Redefining \pageref on input line 73.
+LaTeX Info: Redefining \nameref on input line 73.
 
 (./ggRandomForests-survival.out) (./ggRandomForests-survival.out)
 \@outlinefile=\write4
 \openout4 = `ggRandomForests-survival.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 71.
+LaTeX Font Info:    Try loading font information for U+msa on input line 73.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 71.
+LaTeX Font Info:    Try loading font information for U+msb on input line 73.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for T1+aess on input line 71.
+LaTeX Font Info:    Try loading font information for T1+aess on input line 73.
 
 (/usr/share/texlive/texmf-dist/tex/latex/ae/t1aess.fd
 File: t1aess.fd 1997/11/16 Font definitions for T1/aess.
 )
-LaTeX Font Info:    Try loading font information for T1+aett on input line 83.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 85.
 
 (/usr/share/texlive/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
-Underfull \vbox (badness 1097) has occurred while \output is active []
+Underfull \vbox (badness 3780) has occurred while \output is active []
 
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for TS1+aer on input line 103.
+LaTeX Font Info:    Try loading font information for TS1+aer on input line 105.
 
-LaTeX Font Info:    No file TS1aer.fd. on input line 103.
+LaTeX Font Info:    No file TS1aer.fd. on input line 105.
 
 
 LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
 (Font)              using `TS1/cmr/m/n' instead
-(Font)              for symbol `textbullet' on input line 103.
+(Font)              for symbol `textbullet' on input line 105.
 
 
-Overfull \hbox (6.31752pt too wide) in paragraph at lines 103--113
+Overfull \hbox (6.31752pt too wide) in paragraph at lines 105--115
 \T1/aer/m/n/10.95 cess-ing func-tions (i.e., \T1/aett/m/n/10.95 plot.variable\T
 1/aer/m/n/10.95 , \T1/aett/m/n/10.95 var.select\T1/aer/m/n/10.95 ) to gen-er-at
 e in-ter-me-di-ate \T1/aer/b/n/10.95 ggRandom-
  []
 
-
-LaTeX Warning: Reference `S:data' on page 2 undefined on input line 133.
-
-
-LaTeX Warning: Reference `S:rfsrc' on page 2 undefined on input line 135.
-
-
-LaTeX Warning: Reference `S:variableselection' on page 2 undefined on input lin
-e 140.
-
-
-LaTeX Warning: Reference `S:vimp' on page 2 undefined on input line 141.
-
-
-LaTeX Warning: Reference `S:minimalDepth' on page 2 undefined on input line 142
-.
-
-
-LaTeX Warning: Reference `S:dependence' on page 2 undefined on input line 146.
-
-
-LaTeX Warning: Reference `S:variabledependence' on page 2 undefined on input li
-ne 148.
-
-
-LaTeX Warning: Reference `S:partialdependence' on page 2 undefined on input lin
-e 150.
-
 LaTeX Font Info:    Font shape `T1/aer/b/sl' in size <10.95> not available
-(Font)              Font shape `T1/aer/bx/sl' tried instead on input line 154.
+(Font)              Font shape `T1/aer/bx/sl' tried instead on input line 158.
 
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 \T1/aer/m/n/10.95 2 []
  []
 
-[2]
-
-LaTeX Warning: Reference `S:coplots' on page 3 undefined on input line 157.
-
-
-LaTeX Warning: Reference `S:conclusion' on page 3 undefined on input line 158.
-
-
-Package natbib Warning: Citation `fleming:1991' on page 3 undefined on input li
-ne 167.
-
-
-Package natbib Warning: Citation `fleming:1991' on page 3 undefined on input li
-ne 171.
-
-
-LaTeX Warning: Reference `T:dataLabs' on page 3 undefined on input line 185.
-
-<rfs-categoricalEDA-1.pdf, id=148, 505.89pt x 216.81pt>
+[2] <rfs-categoricalEDA-1.pdf, id=207, 505.89pt x 264.99pt>
 File: rfs-categoricalEDA-1.pdf Graphic file (type pdf)
 
 <use rfs-categoricalEDA-1.pdf>
-Package pdftex.def Info: rfs-categoricalEDA-1.pdf used on input line 255.
-(pdftex.def)             Requested size: 354.12434pt x 151.76926pt.
+Package pdftex.def Info: rfs-categoricalEDA-1.pdf used on input line 261.
+(pdftex.def)             Requested size: 354.12434pt x 185.49577pt.
 
-<rfs-continuousEDA-1.pdf, id=150, 505.89pt x 289.08pt>
+<rfs-continuousEDA-1.pdf, id=209, 505.89pt x 289.08pt>
 File: rfs-continuousEDA-1.pdf Graphic file (type pdf)
 
 <use rfs-continuousEDA-1.pdf>
-Package pdftex.def Info: rfs-continuousEDA-1.pdf used on input line 276.
+Package pdftex.def Info: rfs-continuousEDA-1.pdf used on input line 282.
 (pdftex.def)             Requested size: 354.12434pt x 202.35902pt.
-
-
-LaTeX Warning: Reference `T:missing' on page 3 undefined on input line 324.
-
-
-LaTeX Warning: Reference `S:imputation' on page 3 undefined on input line 333.
-
 
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 [] \T1/aer/m/n/10.95 3
@@ -918,112 +865,85 @@ Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 \T1/aer/m/n/10.95 4 []
  []
 
-[4]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
+[4 <./rfs-categoricalEDA-1.pdf>]
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 [] \T1/aer/m/n/10.95 5
  []
 
-[5 <./rfs-categoricalEDA-1.pdf> <./rfs-continuousEDA-1.pdf>]
-<rfs-plot_gg_survival-1.pdf, id=187, 289.08pt x 216.81pt>
+[5 <./rfs-continuousEDA-1.pdf>]
+<rfs-plot_gg_survival-1.pdf, id=260, 353.32pt x 264.99pt>
 File: rfs-plot_gg_survival-1.pdf Graphic file (type pdf)
 
 <use rfs-plot_gg_survival-1.pdf>
-Package pdftex.def Info: rfs-plot_gg_survival-1.pdf used on input line 389.
-(pdftex.def)             Requested size: 354.12434pt x 265.60614pt.
-
-
-Package natbib Warning: Citation `fleming:1991' on page 6 undefined on input li
-ne 404.
-
+Package pdftex.def Info: rfs-plot_gg_survival-1.pdf used on input line 396.
+(pdftex.def)             Requested size: 354.12434pt x 265.59586pt.
 
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 \T1/aer/m/n/10.95 6 []
  []
 
-[6] <rfs-plot_gg_cum_hazard-1.pdf, id=197, 289.08pt x 216.81pt>
+[6] <rfs-plot_gg_cum_hazard-1.pdf, id=274, 353.32pt x 264.99pt>
 File: rfs-plot_gg_cum_hazard-1.pdf Graphic file (type pdf)
 
 <use rfs-plot_gg_cum_hazard-1.pdf>
-Package pdftex.def Info: rfs-plot_gg_cum_hazard-1.pdf used on input line 420.
-(pdftex.def)             Requested size: 354.12434pt x 265.60614pt.
-
-<rfs-gg_survival-bili-1.pdf, id=200, 397.485pt x 216.81pt>
-File: rfs-gg_survival-bili-1.pdf Graphic file (type pdf)
-
-<use rfs-gg_survival-bili-1.pdf>
-Package pdftex.def Info: rfs-gg_survival-bili-1.pdf used on input line 458.
-(pdftex.def)             Requested size: 354.12434pt x 193.16539pt.
-
-
-LaTeX Warning: Reference `T:FHmodel' on page 7 undefined on input line 469.
-
+Package pdftex.def Info: rfs-plot_gg_cum_hazard-1.pdf used on input line 426.
+(pdftex.def)             Requested size: 354.12434pt x 265.59586pt.
 
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 [] \T1/aer/m/n/10.95 7
  []
 
 [7 <./rfs-plot_gg_survival-1.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+<rfs-gg_survival-bili-1.pdf, id=293, 397.485pt x 264.99pt>
+File: rfs-gg_survival-bili-1.pdf Graphic file (type pdf)
 
+<use rfs-gg_survival-bili-1.pdf>
+Package pdftex.def Info: rfs-gg_survival-bili-1.pdf used on input line 463.
+(pdftex.def)             Requested size: 354.12434pt x 236.09105pt.
 
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 \T1/aer/m/n/10.95 8 []
  []
 
-[8 <./rfs-plot_gg_cum_hazard-1.pdf> <./rfs-gg_survival-bili-1.pdf>]
+[8 <./rfs-plot_gg_cum_hazard-1.pdf>]
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 [] \T1/aer/m/n/10.95 9
  []
 
-[9] <rfs-errorPlot-1.pdf, id=237, 289.08pt x 216.81pt>
+[9 <./rfs-gg_survival-bili-1.pdf>]
+<rfs-errorPlot-1.pdf, id=344, 353.32pt x 264.99pt>
 File: rfs-errorPlot-1.pdf Graphic file (type pdf)
-
-<use rfs-errorPlot-1.pdf>
-Package pdftex.def Info: rfs-errorPlot-1.pdf used on input line 587.
-(pdftex.def)             Requested size: 354.12434pt x 265.60614pt.
- <rfs-rfsrc-plot-1.pdf, id=239, 289.08pt x 216.81pt>
-File: rfs-rfsrc-plot-1.pdf Graphic file (type pdf)
-
-<use rfs-rfsrc-plot-1.pdf>
-Package pdftex.def Info: rfs-rfsrc-plot-1.pdf used on input line 623.
-(pdftex.def)             Requested size: 354.12434pt x 265.60614pt.
+ <use rfs-errorPlot-1.pdf>
+Package pdftex.def Info: rfs-errorPlot-1.pdf used on input line 590.
+(pdftex.def)             Requested size: 354.12434pt x 265.59586pt.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/aer/m/n/10.95 10 []
  []
 
-[10] <rfs-rfsrc-mean2-1.pdf, id=250, 289.08pt x 216.81pt>
+[10] <rfs-rfsrc-plot-1.pdf, id=357, 353.32pt x 264.99pt>
+File: rfs-rfsrc-plot-1.pdf Graphic file (type pdf)
+
+<use rfs-rfsrc-plot-1.pdf>
+Package pdftex.def Info: rfs-rfsrc-plot-1.pdf used on input line 626.
+(pdftex.def)             Requested size: 354.12434pt x 265.59586pt.
+
+<rfs-rfsrc-mean2-1.pdf, id=361, 353.32pt x 264.99pt>
 File: rfs-rfsrc-mean2-1.pdf Graphic file (type pdf)
 
 <use rfs-rfsrc-mean2-1.pdf>
-Package pdftex.def Info: rfs-rfsrc-mean2-1.pdf used on input line 655.
-(pdftex.def)             Requested size: 354.12434pt x 265.60614pt.
-
-Overfull \hbox (25.13928pt too wide) in paragraph at lines 675--684
-\T1/aett/m/n/10.95 does the al-go-rithm pre-dict a re-sponse when val-ues are m
-iss-ing from the test data?\T1/aer/m/n/10.95 .
- []
-
+Package pdftex.def Info: rfs-rfsrc-mean2-1.pdf used on input line 658.
+(pdftex.def)             Requested size: 354.12434pt x 265.59586pt.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 [] \T1/aer/m/n/10.95 11
  []
 
 [11 <./rfs-errorPlot-1.pdf>]
-LaTeX Font Info:    Try loading font information for TS1+aett on input line 688
-.
-LaTeX Font Info:    No file TS1aett.fd. on input line 688.
-
-
-LaTeX Font Warning: Font shape `TS1/aett/m/n' undefined
-(Font)              using `TS1/cmr/m/n' instead
-(Font)              for symbol `textquotesingle' on input line 688.
-
-
-Underfull \vbox (badness 2384) has occurred while \output is active []
+Overfull \hbox (25.13928pt too wide) in paragraph at lines 678--687
+\T1/aett/m/n/10.95 does the al-go-rithm pre-dict a re-sponse when val-ues are m
+iss-ing from the test data?\T1/aer/m/n/10.95 .
+ []
 
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
@@ -1031,11 +951,7 @@ Overfull \hbox (10.94998pt too wide) has occurred while \output is active
  []
 
 [12 <./rfs-rfsrc-plot-1.pdf>]
-
-LaTeX Warning: Reference `S:rfsrc' on page 13 undefined on input line 719.
-
-
-LaTeX Warning: Reference `T:missing' on page 13 undefined on input line 720.
+Underfull \vbox (badness 1320) has occurred while \output is active []
 
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
@@ -1043,49 +959,29 @@ Overfull \hbox (10.94998pt too wide) has occurred while \output is active
  []
 
 [13 <./rfs-rfsrc-mean2-1.pdf>]
-<rfs-predictPlot-1.pdf, id=290, 289.08pt x 216.81pt>
+<rfs-predictPlot-1.pdf, id=408, 353.32pt x 264.99pt>
 File: rfs-predictPlot-1.pdf Graphic file (type pdf)
 
 <use rfs-predictPlot-1.pdf>
-Package pdftex.def Info: rfs-predictPlot-1.pdf used on input line 750.
-(pdftex.def)             Requested size: 354.12434pt x 265.60614pt.
+Package pdftex.def Info: rfs-predictPlot-1.pdf used on input line 753.
+(pdftex.def)             Requested size: 354.12434pt x 265.59586pt.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/aer/m/n/10.95 14 []
  []
 
 [14 <./rfs-predictPlot-1.pdf>]
-
-LaTeX Warning: Reference `S:vimp' on page 15 undefined on input line 795.
-
-
-LaTeX Warning: Reference `S:minimalDepth' on page 15 undefined on input line 79
-6.
-
-<rfs-rf-vimp-1.pdf, id=310, 361.35pt x 216.81pt>
+<rfs-rf-vimp-1.pdf, id=441, 361.35pt x 264.99pt>
 File: rfs-rf-vimp-1.pdf Graphic file (type pdf)
  <use rfs-rf-vimp-1.pdf>
-Package pdftex.def Info: rfs-rf-vimp-1.pdf used on input line 834.
-(pdftex.def)             Requested size: 354.12434pt x 212.47565pt.
-
-
-LaTeX Warning: Reference `T:FHmodel' on page 15 undefined on input line 849.
-
-
-LaTeX Warning: Reference `S:modelSelection' on page 15 undefined on input line 
-851.
-
+Package pdftex.def Info: rfs-rf-vimp-1.pdf used on input line 836.
+(pdftex.def)             Requested size: 354.12434pt x 259.69246pt.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 [] \T1/aer/m/n/10.95 15
  []
 
 [15]
-
-Package natbib Warning: Citation `Ishwaran:2010' on page 16 undefined on input 
-line 875.
-
-
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/aer/m/n/10.95 16 []
  []
@@ -1095,481 +991,321 @@ Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 [] \T1/aer/m/n/10.95 17
  []
 
-[17] <rfs-mindepth-plot-1.pdf, id=333, 361.35pt x 216.81pt>
+[17] <rfs-mindepth-plot-1.pdf, id=478, 361.35pt x 264.99pt>
 File: rfs-mindepth-plot-1.pdf Graphic file (type pdf)
 
 <use rfs-mindepth-plot-1.pdf>
-Package pdftex.def Info: rfs-mindepth-plot-1.pdf used on input line 954.
-(pdftex.def)             Requested size: 354.12434pt x 212.47565pt.
-
-<rfs-depthVimp-1.pdf, id=337, 361.35pt x 216.81pt>
-File: rfs-depthVimp-1.pdf Graphic file (type pdf)
- <use rfs-depthVimp-1.pdf>
-Package pdftex.def Info: rfs-depthVimp-1.pdf used on input line 985.
-(pdftex.def)             Requested size: 354.12434pt x 212.47565pt.
-
-
-LaTeX Warning: Reference `T:FHmodel' on page 18 undefined on input line 1004.
-
-
-LaTeX Warning: Reference `T:FHmodel' on page 18 undefined on input line 1004.
-
-
-LaTeX Warning: Reference `T:modelComp' on page 18 undefined on input line 1042.
-
-
-
-LaTeX Warning: Reference `T:FHmodel' on page 18 undefined on input line 1043.
-
+Package pdftex.def Info: rfs-mindepth-plot-1.pdf used on input line 957.
+(pdftex.def)             Requested size: 354.12434pt x 259.69246pt.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/aer/m/n/10.95 18 []
  []
 
 [18 <./rfs-mindepth-plot-1.pdf>]
-
-LaTeX Warning: Reference `T:missing' on page 19 undefined on input line 1065.
-
+<rfs-depthVimp-1.pdf, id=493, 361.35pt x 264.99pt>
+File: rfs-depthVimp-1.pdf Graphic file (type pdf)
+ <use rfs-depthVimp-1.pdf>
+Package pdftex.def Info: rfs-depthVimp-1.pdf used on input line 987.
+(pdftex.def)             Requested size: 354.12434pt x 259.69246pt.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 [] \T1/aer/m/n/10.95 19
  []
 
 [19 <./rfs-depthVimp-1.pdf>]
-
-LaTeX Warning: Reference `S:variabledependence' on page 20 undefined on input l
-ine 1091.
-
-
-LaTeX Warning: Reference `S:partialdependence' on page 20 undefined on input li
-ne 1093.
-
-<rfs-rfsrc-plot3Mnth-1.pdf, id=363, 289.08pt x 216.81pt>
-File: rfs-rfsrc-plot3Mnth-1.pdf Graphic file (type pdf)
-
-<use rfs-rfsrc-plot3Mnth-1.pdf>
-Package pdftex.def Info: rfs-rfsrc-plot3Mnth-1.pdf used on input line 1118.
-(pdftex.def)             Requested size: 354.12434pt x 265.60614pt.
-
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/aer/m/n/10.95 20 []
  []
 
-[20] <rfs-variable-plotbili-1.pdf, id=375, 289.08pt x 289.08pt>
-File: rfs-variable-plotbili-1.pdf Graphic file (type pdf)
+[20] <rfs-rfsrc-plot3Mnth-1.pdf, id=532, 353.32pt x 264.99pt>
+File: rfs-rfsrc-plot3Mnth-1.pdf Graphic file (type pdf)
 
-<use rfs-variable-plotbili-1.pdf>
-Package pdftex.def Info: rfs-variable-plotbili-1.pdf used on input line 1156.
-(pdftex.def)             Requested size: 354.12434pt x 354.14153pt.
+<use rfs-rfsrc-plot3Mnth-1.pdf>
+Package pdftex.def Info: rfs-rfsrc-plot3Mnth-1.pdf used on input line 1122.
+(pdftex.def)             Requested size: 354.12434pt x 265.59586pt.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 [] \T1/aer/m/n/10.95 21
  []
 
 [21 <./rfs-rfsrc-plot3Mnth-1.pdf>]
+<rfs-variable-plotbili-1.pdf, id=551, 353.32pt x 289.08pt>
+File: rfs-variable-plotbili-1.pdf Graphic file (type pdf)
+
+<use rfs-variable-plotbili-1.pdf>
+Package pdftex.def Info: rfs-variable-plotbili-1.pdf used on input line 1160.
+(pdftex.def)             Requested size: 354.12434pt x 289.74092pt.
+
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/aer/m/n/10.95 22 []
  []
 
 [22 <./rfs-variable-plotbili-1.pdf>]
-
-LaTeX Warning: Reference `S:modelSelection' on page 23 undefined on input line 
-1202.
-
-<rfs-variable-plot-1.pdf, id=404, 505.89pt x 289.08pt>
+<rfs-variable-plot-1.pdf, id=573, 505.89pt x 289.08pt>
 File: rfs-variable-plot-1.pdf Graphic file (type pdf)
 
 <use rfs-variable-plot-1.pdf>
-Package pdftex.def Info: rfs-variable-plot-1.pdf used on input line 1218.
+Package pdftex.def Info: rfs-variable-plot-1.pdf used on input line 1222.
 (pdftex.def)             Requested size: 354.12434pt x 202.35902pt.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 [] \T1/aer/m/n/10.95 23
  []
 
-[23 <./rfs-variable-plot-1.pdf>]
-<rfs-variable-plotCat-1.pdf, id=422, 289.08pt x 289.08pt>
+[23] <rfs-variable-plotCat-1.pdf, id=588, 353.32pt x 289.08pt>
 File: rfs-variable-plotCat-1.pdf Graphic file (type pdf)
 
 <use rfs-variable-plotCat-1.pdf>
-Package pdftex.def Info: rfs-variable-plotCat-1.pdf used on input line 1266.
-(pdftex.def)             Requested size: 354.12434pt x 354.14153pt.
+Package pdftex.def Info: rfs-variable-plotCat-1.pdf used on input line 1269.
+(pdftex.def)             Requested size: 354.12434pt x 289.74092pt.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/aer/m/n/10.95 24 []
  []
 
-[24 <./rfs-variable-plotCat-1.pdf>]
+[24 <./rfs-variable-plot-1.pdf>]
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 [] \T1/aer/m/n/10.95 25
  []
 
-[25] <rfs-pbc-partial-panel-1.pdf, id=449, 361.35pt x 361.35pt>
+[25 <./rfs-variable-plotCat-1.pdf>]
+<rfs-pbc-partial-panel-1.pdf, id=624, 361.35pt x 361.35pt>
 File: rfs-pbc-partial-panel-1.pdf Graphic file (type pdf)
 
 <use rfs-pbc-partial-panel-1.pdf>
-Package pdftex.def Info: rfs-pbc-partial-panel-1.pdf used on input line 1381.
+Package pdftex.def Info: rfs-pbc-partial-panel-1.pdf used on input line 1384.
 (pdftex.def)             Requested size: 354.12434pt x 354.1261pt.
 
-<rfs-pbc-partial-edema-1.pdf, id=451, 289.08pt x 216.81pt>
+<rfs-pbc-partial-edema-1.pdf, id=626, 353.32pt x 264.99pt>
 File: rfs-pbc-partial-edema-1.pdf Graphic file (type pdf)
 
 <use rfs-pbc-partial-edema-1.pdf>
-Package pdftex.def Info: rfs-pbc-partial-edema-1.pdf used on input line 1408.
-(pdftex.def)             Requested size: 354.12434pt x 265.60614pt.
+Package pdftex.def Info: rfs-pbc-partial-edema-1.pdf used on input line 1411.
+(pdftex.def)             Requested size: 354.12434pt x 265.59586pt.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/aer/m/n/10.95 26 []
  []
 
 [26]
-
-LaTeX Warning: Reference `fig:timeSurface3d' on page 27 undefined on input line
- 1457.
-
-
-Package natbib Warning: Citation `plot3D:2014' on page 27 undefined on input li
-ne 1460.
-
-
-LaTeX Warning: Reference `A:TimeDomain' on page 27 undefined on input line 1462
-.
-
-
-Underfull \vbox (badness 2443) has occurred while \output is active []
-
-
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 [] \T1/aer/m/n/10.95 27
  []
 
 [27 <./rfs-pbc-partial-panel-1.pdf>]
+<rfs-timeSurface3d-1.pdf, id=645, 505.89pt x 361.35pt>
+File: rfs-timeSurface3d-1.pdf Graphic file (type pdf)
 
-LaTeX Warning: Reference `fig:timeSurface3d' on page 28 undefined on input line
- 1477.
-
-
-Package natbib Warning: Citation `fleming:1991' on page 28 undefined on input l
-ine 1494.
-
-
-LaTeX Warning: Reference `T:FHmodel' on page 28 undefined on input line 1495.
-
+<use rfs-timeSurface3d-1.pdf>
+Package pdftex.def Info: rfs-timeSurface3d-1.pdf used on input line 1463.
+(pdftex.def)             Requested size: 354.12434pt x 252.94879pt.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/aer/m/n/10.95 28 []
  []
 
 [28 <./rfs-pbc-partial-edema-1.pdf>]
-
-Package natbib Warning: Citation `Ishwaran:2010' on page 29 undefined on input 
-line 1509.
-
-
-Package natbib Warning: Citation `Ishwaran:2011' on page 29 undefined on input 
-line 1509.
-
-
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 [] \T1/aer/m/n/10.95 29
  []
 
-[29]
-Overfull \hbox (9.20432pt too wide) in paragraph at lines 1566--1571
+[29 <./rfs-timeSurface3d-1.pdf>]
+Overfull \hbox (10.94998pt too wide) has occurred while \output is active
+\T1/aer/m/n/10.95 30 []
+ []
+
+[30]
+Overfull \hbox (9.20432pt too wide) in paragraph at lines 1577--1582
 []\T1/aer/m/n/10.95 The \T1/aett/m/n/10.95 gg_interaction \T1/aer/m/n/10.95 fun
 c-tion wraps the \T1/aett/m/n/10.95 find.interaction \T1/aer/m/n/10.95 ma-trix 
 for use with the \T1/aer/b/n/10.95 ggRandom-
  []
 
-<rfs-interactionPanel-1.pdf, id=487, 505.89pt x 361.35pt>
+<rfs-interactionPanel-1.pdf, id=688, 505.89pt x 361.35pt>
 File: rfs-interactionPanel-1.pdf Graphic file (type pdf)
 
 <use rfs-interactionPanel-1.pdf>
-Package pdftex.def Info: rfs-interactionPanel-1.pdf used on input line 1578.
+Package pdftex.def Info: rfs-interactionPanel-1.pdf used on input line 1589.
 (pdftex.def)             Requested size: 354.12434pt x 252.94879pt.
-
-Overfull \hbox (10.94998pt too wide) has occurred while \output is active
-\T1/aer/m/n/10.95 30 []
- []
-
-[30 <./rfs-interactionPanel-1.pdf>]
-
-Package natbib Warning: Citation `chambers:1992' on page 31 undefined on input 
-line 1599.
-
-
-Package natbib Warning: Citation `cleveland:1993' on page 31 undefined on input
- line 1599.
-
-
-Package natbib Warning: Citation `cleveland:1993' on page 31 undefined on input
- line 1601.
-
-
-Overfull \hbox (2.52312pt too wide) in paragraph at lines 1609--1615
-\T1/aer/m/n/10.95 Re-call the vari-able de-pen-dence for biliru-bin shown in Fi
-g-ure [][]14[][]. We recre-ated the \T1/aett/m/n/10.95 gg_variable
- []
-
-<rfs-var_dep-1.pdf, id=502, 289.08pt x 216.81pt>
-File: rfs-var_dep-1.pdf Graphic file (type pdf)
- <use rfs-var_dep-1.pdf>
-Package pdftex.def Info: rfs-var_dep-1.pdf used on input line 1639.
-(pdftex.def)             Requested size: 354.12434pt x 265.60614pt.
-
-<rfs-coplot_bilirubin-1.pdf, id=506, 505.89pt x 216.81pt>
-File: rfs-coplot_bilirubin-1.pdf Graphic file (type pdf)
-
-<use rfs-coplot_bilirubin-1.pdf>
-Package pdftex.def Info: rfs-coplot_bilirubin-1.pdf used on input line 1659.
-(pdftex.def)             Requested size: 354.12434pt x 151.76926pt.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 [] \T1/aer/m/n/10.95 31
  []
 
-[31]
-Underfull \vbox (badness 2277) has occurred while \output is active []
+[31 <./rfs-interactionPanel-1.pdf>]
+Overfull \hbox (2.52312pt too wide) in paragraph at lines 1620--1626
+\T1/aer/m/n/10.95 Re-call the vari-able de-pen-dence for biliru-bin shown in []
+[]Fig-ure 14[][][]. We recre-ated the \T1/aett/m/n/10.95 gg_variable
+ []
 
+<rfs-var_dep-1.pdf, id=710, 353.32pt x 264.99pt>
+File: rfs-var_dep-1.pdf Graphic file (type pdf)
+ <use rfs-var_dep-1.pdf>
+Package pdftex.def Info: rfs-var_dep-1.pdf used on input line 1650.
+(pdftex.def)             Requested size: 354.12434pt x 265.59586pt.
+
+<rfs-coplot_bilirubin-1.pdf, id=714, 505.89pt x 264.99pt>
+File: rfs-coplot_bilirubin-1.pdf Graphic file (type pdf)
+
+<use rfs-coplot_bilirubin-1.pdf>
+Package pdftex.def Info: rfs-coplot_bilirubin-1.pdf used on input line 1670.
+(pdftex.def)             Requested size: 354.12434pt x 185.49577pt.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/aer/m/n/10.95 32 []
  []
 
-[32 <./rfs-var_dep-1.pdf> <./rfs-coplot_bilirubin-1.pdf>]
-<rfs-albumin-coplot-1.pdf, id=539, 505.89pt x 289.08pt>
+[32] <rfs-albumin-coplot-1.pdf, id=723, 505.89pt x 289.08pt>
 File: rfs-albumin-coplot-1.pdf Graphic file (type pdf)
 
 <use rfs-albumin-coplot-1.pdf>
-Package pdftex.def Info: rfs-albumin-coplot-1.pdf used on input line 1693.
+Package pdftex.def Info: rfs-albumin-coplot-1.pdf used on input line 1704.
 (pdftex.def)             Requested size: 354.12434pt x 202.35902pt.
-
-
-LaTeX Warning: Reference `A:biliCoplot' on page 33 undefined on input line 1712
-.
-
-<rfs-bili-coplot-1.pdf, id=543, 505.89pt x 289.08pt>
-File: rfs-bili-coplot-1.pdf Graphic file (type pdf)
-
-<use rfs-bili-coplot-1.pdf>
-Package pdftex.def Info: rfs-bili-coplot-1.pdf used on input line 1717.
-(pdftex.def)             Requested size: 354.12434pt x 202.35902pt.
-
-
-Package natbib Warning: Citation `cleveland:1993' on page 33 undefined on input
- line 1731.
-
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 [] \T1/aer/m/n/10.95 33
  []
 
-[33 <./rfs-albumin-coplot-1.pdf>]
+[33 <./rfs-var_dep-1.pdf> <./rfs-coplot_bilirubin-1.pdf>]
+<rfs-bili-coplot-1.pdf, id=750, 505.89pt x 289.08pt>
+File: rfs-bili-coplot-1.pdf Graphic file (type pdf)
+
+<use rfs-bili-coplot-1.pdf>
+Package pdftex.def Info: rfs-bili-coplot-1.pdf used on input line 1751.
+(pdftex.def)             Requested size: 354.12434pt x 202.35902pt.
+
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/aer/m/n/10.95 34 []
  []
 
-[34 <./rfs-bili-coplot-1.pdf>]
-
-LaTeX Warning: Reference `fig:bili-albumin' on page 35 undefined on input line 
-1799.
-
-
-LaTeX Warning: Reference `fig:albumin-bili' on page 35 undefined on input line 
-1809.
-
-
-LaTeX Warning: Reference `A:biliPartialCoplot' on page 35 undefined on input li
-ne 1810.
-
-
-LaTeX Warning: Reference `S:timeSurface' on page 35 undefined on input line 181
-9.
-
-
-LaTeX Warning: Reference `fig:surface3d' on page 35 undefined on input line 183
-2.
-
-
-LaTeX Warning: Reference `fig:bili-albumin' on page 35 undefined on input line 
-1839.
-
-
-LaTeX Warning: Reference `fig:albumin-bili' on page 35 undefined on input line 
-1839.
-
-
-LaTeX Warning: Reference `fig:bili-albumin' on page 35 undefined on input line 
-1842.
-
-
-LaTeX Warning: Reference `fig:surface3d' on page 35 undefined on input line 184
-7.
-
-
-LaTeX Warning: Reference `fig:albumin-bili' on page 35 undefined on input line 
-1849.
-
-
-LaTeX Warning: Reference `fig:bili-albumin' on page 35 undefined on input line 
-1853.
-
-
-Package natbib Warning: Citation `Wickham:2009' on page 35 undefined on input l
-ine 1871.
-
-
+[34 <./rfs-albumin-coplot-1.pdf>]
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 [] \T1/aer/m/n/10.95 35
  []
 
-[35]
+[35 <./rfs-bili-coplot-1.pdf>]
+<rfs-bili-albumin-1.pdf, id=784, 505.89pt x 289.08pt>
+File: rfs-bili-albumin-1.pdf Graphic file (type pdf)
 
-Package natbib Warning: Citation `Ishwaran:RFSRC:2014' on page 36 undefined on 
-input line 1882.
+<use rfs-bili-albumin-1.pdf>
+Package pdftex.def Info: rfs-bili-albumin-1.pdf used on input line 1831.
+(pdftex.def)             Requested size: 354.12434pt x 202.35902pt.
 
+<rfs-albumin-bili-1.pdf, id=788, 505.89pt x 289.08pt>
+File: rfs-albumin-bili-1.pdf Graphic file (type pdf)
 
-Package natbib Warning: Citation `Wickham:2009' on page 36 undefined on input l
-ine 1885.
-
-
-Package natbib Warning: Citation `fleming:1991' on page 36 undefined on input l
-ine 1895.
-
-
-Package natbib Warning: Citation `Xie:2015' on page 36 undefined on input line 
-1904.
-
-
-Package natbib Warning: Citation `Xie:2014' on page 36 undefined on input line 
-1904.
-
-
-Package natbib Warning: Citation `Xie:2013' on page 36 undefined on input line 
-1904.
-
-
-Package natbib Warning: Citation `rcore' on page 36 undefined on input line 190
-5.
-
-
-Package natbib Warning: Citation `rcore' on page 36 undefined on input line 191
-0.
-
+<use rfs-albumin-bili-1.pdf>
+Package pdftex.def Info: rfs-albumin-bili-1.pdf used on input line 1854.
+(pdftex.def)             Requested size: 354.12434pt x 202.35902pt.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/aer/m/n/10.95 36 []
  []
 
-[36]
+[36 <./rfs-bili-albumin-1.pdf>]
 
-LaTeX Warning: Reference `S:timeSurface' on page 37 undefined on input line 194
-2.
-
-
-LaTeX Warning: Reference `fig:timeSurface3d' on page 37 undefined on input line
- 1944.
+LaTeX Warning: Reference `timeSurface' on page 37 undefined on input line 1869.
 
 
-LaTeX Warning: Reference `S:coplots' on page 37 undefined on input line 1948.
-
-
-LaTeX Warning: Reference `S:partialcoplots' on page 37 undefined on input line 
-1960.
-
-
-LaTeX Warning: Reference `fig:bili-albumin' on page 37 undefined on input line 
-1962.
-
-
-LaTeX Warning: Reference `fig:albumin-bili' on page 37 undefined on input line 
-1963.
-
-
-LaTeX Warning: Reference `S:partialSurface' on page 37 undefined on input line 
-1971.
-
-
-LaTeX Warning: Reference `fig:surface3d' on page 37 undefined on input line 197
-4.
-
-
-Overfull \hbox (1.45567pt too wide) in paragraph at lines 1990--1993
-\T1/aer/m/n/10.95 nia,Berkeley, CA. 94708. [][]$\T1/aett/m/n/10.95 https : / / 
-www . stat . berkeley . edu / ~breiman / OOBestimation . pdf$[][]\T1/aer/m/n/10
-.95 . 
- []
-
+<rfs-surface3d-1.pdf, id=799, 505.89pt x 361.35pt>
+File: rfs-surface3d-1.pdf Graphic file (type pdf)
+ <use rfs-surface3d-1.pdf>
+Package pdftex.def Info: rfs-surface3d-1.pdf used on input line 1884.
+(pdftex.def)             Requested size: 354.12434pt x 252.94879pt.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 [] \T1/aer/m/n/10.95 37
  []
 
-[37]
-
-Package natbib Warning: There were undefined citations.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2091.
-
-Underfull \hbox (badness 10000) in paragraph at lines 2091--2091
-
- []
-
-
+[37 <./rfs-albumin-bili-1.pdf>]
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/aer/m/n/10.95 38 []
  []
 
-[38]
+[38 <./rfs-surface3d-1.pdf>] (./ggRandomForests-survival.bbl
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 [] \T1/aer/m/n/10.95 39
  []
 
 [39]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2091.
+LaTeX Font Info:    Font shape `T1/aess/m/it' in size <10.95> not available
+(Font)              Font shape `T1/aess/m/sl' tried instead on input line 43.
+LaTeX Font Info:    Font shape `T1/aer/b/it' in size <10.95> not available
+(Font)              Font shape `T1/aer/bx/it' tried instead on input line 147.
+
+Overfull \hbox (10.94998pt too wide) has occurred while \output is active
+\T1/aer/m/n/10.95 40 []
+ []
+
+[40])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1993.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1993--1993
+
+ []
+
+
+Overfull \hbox (10.94998pt too wide) has occurred while \output is active
+[] \T1/aer/m/n/10.95 41
+ []
+
+[41]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1993.
  (./ggRandomForests-survival.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2091.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2091.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1993.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1993.
 
-Package rerunfilecheck Info: File `ggRandomForests-survival.out' has not change
-d.
-(rerunfilecheck)             Checksum: 896A3B15CAD4EEA6533F14F073C5206F;3234.
 
+
+Package rerunfilecheck Warning: File `ggRandomForests-survival.out' has changed
+.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `ggRandomForests-survival.out':
+(rerunfilecheck)             Before: 1FFBB39C6C90E2851D6CF7C0C9B6FB1E;2650
+(rerunfilecheck)             After:  66741E4F3844958000EE7B528C8D1357;2626.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2091.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1993.
  ) 
 Here is how much of TeX's memory you used:
- 8408 strings out of 495028
- 120679 string characters out of 6181496
- 206079 words of memory out of 5000000
- 11267 multiletter control sequences out of 15000+600000
- 49848 words of font info for 95 fonts, out of 8000000 for 9000
+ 8509 strings out of 495028
+ 122514 string characters out of 6181496
+ 208525 words of memory out of 5000000
+ 11361 multiletter control sequences out of 15000+600000
+ 53399 words of font info for 98 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 36i,9n,34p,457b,478s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,9n,34p,457b,480s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/jehrling/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmbxsl10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-msl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsltt1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on ggRandomForests-survival.pdf (39 pages, 1189206 bytes).
+t/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsltt10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on ggRandomForests-survival.pdf (41 pages, 1987318 bytes).
 PDF statistics:
- 744 PDF objects out of 1000 (max. 8388607)
- 631 compressed objects within 7 object streams
- 151 named destinations out of 1000 (max. 500000)
- 356 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 986 PDF objects out of 1000 (max. 8388607)
+ 856 compressed objects within 9 object streams
+ 150 named destinations out of 1000 (max. 500000)
+ 328 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -11,20 +11,14 @@
 \BOOKMARK [2][-]{Subsection.4.0.Variable Importance.2}{Variable Importance}{Section.3.Variable selection.1}% 11
 \BOOKMARK [2][-]{Subsection.4.1.Minimal Depth.2}{Minimal Depth}{Section.3.Variable selection.1}% 12
 \BOOKMARK [2][-]{Subsection.4.2.Variable selection comparison.2}{Variable selection comparison}{Section.3.Variable selection.1}% 13
-\BOOKMARK [1][-]{Section.4.Variable dependence.1}{Variable dependence}{}% 14
-\BOOKMARK [2][-]{Subsection.5.0.Variable Dependence.2}{Variable Dependence}{Section.4.Variable dependence.1}% 15
-\BOOKMARK [2][-]{Subsection.5.1.Partial Dependence.2}{Partial Dependence}{Section.4.Variable dependence.1}% 16
-\BOOKMARK [2][-]{Subsection.5.2.Partial dependence as a function of time.2}{Partial dependence as a function of time}{Section.4.Variable dependence.1}% 17
-\BOOKMARK [1][-]{Section.5.Variable Interactions.1}{Variable Interactions}{}% 18
+\BOOKMARK [1][-]{Section.4.Variable/Response dependence.1}{Variable/Response dependence}{}% 14
+\BOOKMARK [2][-]{Subsection.5.0.Variable dependence.2}{Variable dependence}{Section.4.Variable/Response dependence.1}% 15
+\BOOKMARK [2][-]{Subsection.5.1.Partial dependence.2}{Partial dependence}{Section.4.Variable/Response dependence.1}% 16
+\BOOKMARK [2][-]{Subsection.5.2.Temporal partial dependence.2}{Temporal partial dependence}{Section.4.Variable/Response dependence.1}% 17
+\BOOKMARK [1][-]{Section.5.Variable interactions.1}{Variable interactions}{}% 18
 \BOOKMARK [1][-]{Section.6.Conditional dependence plots.1}{Conditional dependence plots}{}% 19
 \BOOKMARK [2][-]{Subsection.7.0.Partial dependence coplots.2}{Partial dependence coplots}{Section.6.Conditional dependence plots.1}% 20
 \BOOKMARK [1][-]{Section.7.Partial plot surfaces.1}{Partial plot surfaces}{}% 21
 \BOOKMARK [1][-]{Section.8.Conclusion.1}{Conclusion}{}% 22
 \BOOKMARK [2][-]{Subsection.9.0.Computational details.2}{Computational details}{Section.8.Conclusion.1}% 23
 \BOOKMARK [2][-]{Subsection.9.1.Acknowledgement.2}{Acknowledgement}{Section.8.Conclusion.1}% 24
-\BOOKMARK [1][-]{Section..Source Code.1}{Source Code}{}% 25
-\BOOKMARK [2][-]{Subsection.A.0.Partial Dependence in Time Dimension.2}{Partial Dependence in Time Dimension}{Section..Source Code.1}% 26
-\BOOKMARK [2][-]{Subsection.A.1.Bilirubin Coplot.2}{Bilirubin Coplot}{Section..Source Code.1}% 27
-\BOOKMARK [2][-]{Subsection.A.2.Bilirubin Partial Coplot.2}{Bilirubin Partial Coplot}{Section..Source Code.1}% 28
-\BOOKMARK [2][-]{Subsection.A.3.Partial Dependence in Multiple Variable Dimensions.2}{Partial Dependence in Multiple Variable Dimensions}{Section..Source Code.1}% 29
-\BOOKMARK [1][-]{subsection.A.4}{References}{}% 30
