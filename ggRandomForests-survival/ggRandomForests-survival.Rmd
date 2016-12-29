@@ -1,7 +1,7 @@
 ---
 author:
   - name: John Ehrlinger
-    affiliation: Microsoft
+    affiliation: Microsoft, Machine Learning COGS
     address: >
       One Memorial Drive
       Cambridge, MA 02142
@@ -14,18 +14,21 @@ title:
   plain:     "ggRandomForests: Exploring Random Forest Survival"
   # For running headers, if needed
   short:     "\\pkg{ggRandomForests}"
-abstract: >
-  Random forest [@Breiman:2001] (RF) is a non-parametric statistical method requiring no distributional assumptions on covariate relation to the response. RF is a robust, nonlinear technique that optimizes predictive accuracy by fitting an ensemble of trees to stabilize model estimates. Random survival forests (RSF) [@Ishwaran:2007a; @Ishwaran:2008] are an extension of Breimans RF techniques allowing efficient non-parametric analysis of time to event data. The \pkg{randomForestSRC} package [@Ishwaran:RFSRC:2014] is a unified treatment of Breimans random forest for survival, regression and classification problems.\par
+preamble: >
+  \usepackage{booktabs}
+  \usepackage{longtable}
+  \usepackage{amsmath}
+  \usepackage{amssymb,amsthm}
+abstract: |
+  Random forest [@Breiman:2001] (RF) is a non-parametric statistical method requiring no distributional assumptions on covariate relation to the response. RF is a robust, nonlinear technique that optimizes predictive accuracy by fitting an ensemble of trees to stabilize model estimates. Random survival forests (RSF) [@Ishwaran:2007a; @Ishwaran:2008] are an extension of Breimans RF techniques allowing efficient non-parametric analysis of time to event data. The \pkg{randomForestSRC} package [@Ishwaran:RFSRC:2014] is a unified treatment of Breimans random forest for survival, regression and classification problems.
  
-  Predictive accuracy makes RF an attractive alternative to parametric models, though complexity and interpretability of the forest hinder wider application of the method. We introduce the \pkg{ggRandomForests} package, tools for visually understand random forest models grown in \proglang{R} [@rcore] with the \pkg{randomForestSRC} package. The \pkg{ggRandomForests} package is structured to extract intermediate data objects from \pkg{randomForestSRC} objects and generate figures using the \pkg{ggplot2} [@Wickham:2009] graphics package.\par
+  Predictive accuracy makes RF an attractive alternative to parametric models, though complexity and interpretability of the forest hinder wider application of the method. We introduce the \pkg{ggRandomForests} package, tools for visually understand random forest models grown in \proglang{R} [@rcore] with the \pkg{randomForestSRC} package. The \pkg{ggRandomForests} package is structured to extract intermediate data objects from \pkg{randomForestSRC} objects and generate figures using the \pkg{ggplot2} [@Wickham:2009] graphics package.
   
   This document is structured as a tutorial for building random forest for survival with the \pkg{randomForestSRC} package and using the \pkg{ggRandomForests} package for investigating how the forest is constructed. We analyse the Primary Biliary Cirrhosis of the liver data from a clinical trial at the Mayo Clinic [@fleming:1991]. We demonstrate random forest variable selection using Variable Importance (VIMP) [@Breiman:2001] and Minimal Depth [@Ishwaran:2010], a property derived from the construction of each tree within the forest. We will also demonstrate the use of variable dependence and partial dependence plots [@Friedman:2000] to aid in the interpretation of RSF results. We then examine variable interactions between covariates using conditional variable dependence plots. Our aim is to demonstrate the strength of using Random Forest methods for both prediction and information retrieval, specifically in time to event data settings.
 keywords:
   # at least one keyword must be supplied
   formatted: [random forest, survival, vimp, minimal depth, "\\proglang{R}", "\\pkg{randomForestSRC}", "\\pkg{ggRandomForests}", "\\pkg{randomForest}"]
   plain:     [random forest, survival, vimp, minimal depth, r, randomForestSRC,ggRandomForests,randomForest]
-preamble: >
-  \usepackage{amssymb, amsmath, booktabs, longtable}
 bibliography: ggRandomForests.bib
 output: 
   rticles::jss_article:
@@ -33,6 +36,10 @@ output:
     fig_caption: yes
     keep_tex: true
     number_sections: true
+vignette: >
+  %\VignetteIndexEntry{ggRandomForests: Exploring Random Forest Survival}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
 ---
 
 ``` {r setup, include = FALSE, cache = FALSE, echo=FALSE}
@@ -616,7 +623,7 @@ Generating partial dependence data is effectively averaging the response for a s
 
 For time to event data, we also have to deal with the additional time dimension, as with variable dependence. The following code block uses the `mclapply` function from the \pkg{parallel} package to run the `plot.variable` function for three time points (`time`=1, 3 and 5 years) in parallel. For RSF models, we calculate a risk adjusted survival estimates (`surv.type="surv"`), suppressing the internal base graphs (`show.plots = FALSE`) and store the point estimates in the `partial_pbc` `list`.
 
-```{r pbc-partial, echo=TRUE}
+```{r pbc-partial, cache=TRUE, echo=TRUE}
 xvar <- c(xvar, xvar.cat)
 
 time_index <- c(which(rfsrc_pbc$time.interest > 1)[1]-1,  
@@ -673,7 +680,7 @@ It is instructive to see a more detailed map of the risk adjusted response to ge
 
 For this exercise, we will generate a series of 50 `gg_partial` plot curves for the `bili` variable. To fill the surface in, we also increased the number of points along the distribution of `bili` to `npts=50` to create a grid of $50 \times 50$ risk adjusted estimates of survival along time in one dimension and the `bili` variable in the second.
 
-```{r timeSurface3d, fig.cap="Partial dependence surface. Partial dependence of predicted survival (0 to 5 years) as a function of bili. Blue lines indicate partial dependence at 1 and 3 years, as in bili panel of \\autoref{fig:pbc-partial-panel}.", fig.width=7, fig.height=5}
+```{r timeSurface3d, fig.cap="Partial dependence surface. Partial dependence of predicted survival (0 to 5 years) as a function of bili. Blue lines indicate partial dependence at 1 and 3 years, as in bili panel of \\autoref{fig:pbc-partial-panel}.", cache=TRUE, fig.width=7, fig.height=5}
 # Restrict the time of interest to less than 5 years.
 time_pts <- rfsrc_pbc$time.interest[which(rfsrc_pbc$time.interest<=5)]
 
@@ -893,7 +900,7 @@ Just as in partial dependence, we can view the partial coplot curves as slices a
 
 A difficulty with conditional dependence for this exercise is the reduction of the sample sizes for calculating a coplot surface. So instead, we calculate the full partial dependence surface by generating 50 `albumin` values spaced evenly along the data distribution. For each value of `albumin`, we calculate the partial dependence on `bili` at `npts = 50` points with the `plot.variable` function. We generate the surface again using the `surf3D` function.
 
-```{r surface3d, fig.cap="Partial dependence surface of survival at 1 year as a funtion of bili and albumin. Blue lines indicate partial coplot cut points for albumin (\\autoref{fig:bili-albumin}) and bili (\\autoref{fig:albumin-bili}).", fig.width=7, fig.height=5}
+```{r surface3d, fig.cap="Partial dependence surface of survival at 1 year as a funtion of bili and albumin. Blue lines indicate partial coplot cut points for albumin (\\autoref{fig:bili-albumin}) and bili (\\autoref{fig:albumin-bili}).", fig.width=7, fig.height=5, cache = TRUE}
 # Find the quantile points to create 50 cut points
 alb_partial_pts <-quantile_pts(ggvar$albumin, groups = 50)
 

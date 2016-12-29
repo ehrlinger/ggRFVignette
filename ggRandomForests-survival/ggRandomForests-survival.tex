@@ -1,11 +1,11 @@
-\documentclass[article, nojss]{jss}
+\documentclass[article]{jss}
 \usepackage[utf8]{inputenc}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 \author{
-John Ehrlinger\\Microsoft
+John Ehrlinger\\Microsoft, Machine Learning COGS
 }
 \title{\pkg{ggRandomForests}: Exploring Random Forest Survival}
 \Keywords{random forest, survival, vimp, minimal depth, \proglang{R}, \pkg{randomForestSRC}, \pkg{ggRandomForests}, \pkg{randomForest}}
@@ -62,13 +62,14 @@ information retrieval, specifically in time to event data settings.
 
 \Address{
     John Ehrlinger\\
-  Microsoft\\
+  Microsoft, Machine Learning COGS\\
   One Memorial Drive Cambridge, MA 02142\\
   E-mail: \href{mailto:john.ehrlinger@gmail.com}{\nolinkurl{john.ehrlinger@gmail.com}}\\
   URL: \url{https://github.com/ehrlinger/ggRandomForests}\\~\\
   }
 
-\usepackage{amssymb, amsmath, booktabs, longtable}
+\usepackage{booktabs} \usepackage{longtable} \usepackage{amsmath}
+\usepackage{amssymb,amsthm}
 
 \begin{document}
 
@@ -258,7 +259,7 @@ separate the individual observations.
 \begin{Schunk}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-categoricalEDA-1}
+{\centering \includegraphics{rfs-categoricalEDA-1} 
 
 }
 
@@ -279,7 +280,7 @@ finding data anomalies.
 \begin{Schunk}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-continuousEDA-1}
+{\centering \includegraphics{rfs-continuousEDA-1} 
 
 }
 
@@ -352,7 +353,7 @@ set as follows.
 R> # Create the trial and test data sets.
 R> pbc.trial <- pbc %>% filter(!is.na(treatment))
 R> pbc.test <- pbc %>% filter(is.na(treatment))
-R>
+R> 
 R> # Create the gg_survival object
 R> gg_dta <- gg_survival(interval = "years",
 R+                       censor = "status",
@@ -393,7 +394,7 @@ R+   coord_cartesian(y = c(0, 1.01))
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-plot_gg_survival-1}
+{\centering \includegraphics{rfs-plot_gg_survival-1} 
 
 }
 
@@ -423,7 +424,7 @@ R+   coord_cartesian(ylim = c(-0.02, 1.22))
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-plot_gg_cum_hazard-1}
+{\centering \includegraphics{rfs-plot_gg_cum_hazard-1} 
 
 }
 
@@ -452,7 +453,7 @@ with \pkg{ggplot2} commands to generate \autoref{fig:gg_survival-bili}.
 \begin{Sinput}
 R> pbc.bili <- pbc.trial
 R> pbc.bili$bili_grp <- cut(pbc.bili$bili, breaks = c(0, 0.8, 1.3, 3.4, 29))
-R>
+R> 
 R> plot(gg_survival(interval = "years", censor = "status", by = "bili_grp",
 R+                  data = pbc.bili), error = "none") +
 R+   labs(y = "Survival Probability", x = "Observation Time (years)",
@@ -460,7 +461,7 @@ R+        color = "Bilirubin")
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-gg_survival-bili-1}
+{\centering \includegraphics{rfs-gg_survival-bili-1} 
 
 }
 
@@ -545,7 +546,7 @@ forest. The forest uses all remaining variables in the
 \begin{Schunk}
 \begin{Sinput}
 R> rfsrc_pbc <- rfsrc(Surv(years, status) ~ ., data = pbc.trial,
-R+                    nsplit = 10, na.action = "na.impute",
+R+                    nsplit = 10, na.action = "na.impute", 
 R+                    tree.err = TRUE,importance = TRUE)
 \end{Sinput}
 \end{Schunk}
@@ -587,7 +588,7 @@ R> plot(gg_error(rfsrc_pbc))
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-errorPlot-1}
+{\centering \includegraphics{rfs-errorPlot-1} 
 
 }
 
@@ -623,7 +624,7 @@ R> show(ggRFsrc)
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-rfsrc-plot-1}
+{\centering \includegraphics{rfs-rfsrc-plot-1} 
 
 }
 
@@ -655,7 +656,7 @@ R+   coord_cartesian(ylim = c(-0.01, 1.01))
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-rfsrc-mean2-1}
+{\centering \includegraphics{rfs-rfsrc-mean2-1} 
 
 }
 
@@ -750,7 +751,7 @@ R+   coord_cartesian(ylim = c(-0.01, 1.01))
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-predictPlot-1}
+{\centering \includegraphics{rfs-predictPlot-1} 
 
 }
 
@@ -833,7 +834,7 @@ R+   labs(fill = "VIMP > 0")
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-rf-vimp-1}
+{\centering \includegraphics{rfs-rf-vimp-1} 
 
 }
 
@@ -897,38 +898,38 @@ minimal depth variable selection ...
 
 
 -----------------------------------------------------------
-family             : surv
-var. selection     : Minimal Depth
-conservativeness   : medium
-x-weighting used?  : TRUE
-dimension          : 17
-sample size        : 312
-ntree              : 1000
-nsplit             : 10
-mtry               : 5
-nodesize           : 3
-refitted forest    : FALSE
-model size         : 14
-depth threshold    : 6.7549
-PE (true OOB)      : 16.502
+family             : surv 
+var. selection     : Minimal Depth 
+conservativeness   : medium 
+x-weighting used?  : TRUE 
+dimension          : 17 
+sample size        : 312 
+ntree              : 1000 
+nsplit             : 10 
+mtry               : 5 
+nodesize           : 3 
+refitted forest    : FALSE 
+model size         : 14 
+depth threshold    : 6.7351 
+PE (true OOB)      : 16.382 
 
 
 Top variables:
             depth  vimp
-bili        1.708 0.067
-albumin     2.483 0.012
-copper      2.904 0.015
-prothrombin 2.931 0.014
-chol        3.227 0.006
-platelet    3.329 0.000
-edema       3.333 0.016
-sgot        3.677 0.007
-age         3.702 0.009
-alk         4.039 0.001
-trig        4.514 0.000
-ascites     5.194 0.013
-stage       5.247 0.007
-hepatom     6.476 0.003
+bili        1.853 0.062
+albumin     2.572 0.012
+copper      2.768 0.018
+prothrombin 2.773 0.015
+edema       3.108 0.019
+platelet    3.323 0.000
+chol        3.362 0.006
+age         3.713 0.009
+sgot        3.821 0.005
+alk         4.033 0.000
+trig        4.476 0.001
+stage       5.114 0.007
+ascites     5.290 0.013
+hepatom     6.691 0.004
 -----------------------------------------------------------
 \end{Soutput}
 \begin{Sinput}
@@ -940,7 +941,7 @@ R> # print(gg_md)
 The \texttt{gg\_minimal\_depth} summary mostly reproduces the output
 from the \texttt{var.select} function from the \pkg{randomForestSRC}
 package. We report the minimal depth threshold (\texttt{threshold}
-6.755) and the number of variables with depth below that threshold
+6.735) and the number of variables with depth below that threshold
 (\texttt{model\ size} 14). We also list a table of the top (14) selected
 variables, in minimal depth rank order with the associated VIMP
 measures. The minimal depth numbers indicate that \texttt{bili} tends to
@@ -954,7 +955,7 @@ R> plot(gg_md, lbls = st.labs)
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-mindepth-plot-1}
+{\centering \includegraphics{rfs-mindepth-plot-1} 
 
 }
 
@@ -984,7 +985,7 @@ R+   theme(legend.position=c(0.8, 0.2))
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-depthVimp-1}
+{\centering \includegraphics{rfs-depthVimp-1} 
 
 }
 
@@ -1017,23 +1018,23 @@ copper & NA & 3 & 3\\
 \hline
 prothrombin & 4 & 4 & 4\\
 \hline
-chol & NA & 5 & 10\\
+edema & 5 & 5 & 2\\
 \hline
 platelet & NA & 6 & 16\\
 \hline
-edema & 5 & 7 & 2\\
+chol & NA & 7 & 9\\
 \hline
-sgot & NA & 8 & 8\\
+age & 3 & 8 & 7\\
 \hline
-age & 3 & 9 & 7\\
+sgot & NA & 9 & 10\\
 \hline
-alk & NA & 10 & 13\\
+alk & NA & 10 & 15\\
 \hline
-trig & NA & 11 & 15\\
+trig & NA & 11 & 14\\
 \hline
-ascites & NA & 12 & 5\\
+stage & NA & 12 & 8\\
 \hline
-stage & NA & 13 & 9\\
+ascites & NA & 13 & 5\\
 \hline
 hepatom & NA & 14 & 11\\
 \hline
@@ -1119,7 +1120,7 @@ R+   coord_cartesian(xlim = c(0, 5))
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-rfsrc-plot3Mnth-1}
+{\centering \includegraphics{rfs-rfsrc-plot3Mnth-1} 
 
 }
 
@@ -1147,7 +1148,7 @@ dependence plots can be constructed from this object.
 \begin{Sinput}
 R> gg_v <- gg_variable(rfsrc_pbc, time = c(1, 3),
 R+                     time.labels = c("1 Year", "3 Years"))
-R>
+R> 
 R> plot(gg_v, xvar = "bili", alpha = 0.4) + #, se=FALSE
 R+   labs(y = "Survival", x = st.labs["bili"]) +
 R+   theme(legend.position = "none") +
@@ -1157,7 +1158,7 @@ R+   coord_cartesian(ylim = c(-0.01, 1.01))
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-variable-plotbili-1}
+{\centering \includegraphics{rfs-variable-plotbili-1} 
 
 }
 
@@ -1209,7 +1210,7 @@ plot the remaining continuous variables of interest found in
 \begin{Sinput}
 R> xvar <- c("bili", "albumin", "copper", "prothrombin", "age")
 R> xvar.cat <- c("edema")
-R>
+R> 
 R> plot(gg_v, xvar = xvar[-1], panel = TRUE, alpha = 0.4) +
 R+   labs(y = "Survival") +
 R+   theme(legend.position = "none") +
@@ -1219,7 +1220,7 @@ R+   coord_cartesian(ylim = c(-0.05, 1.05))
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-variable-plot-1}
+{\centering \includegraphics{rfs-variable-plot-1} 
 
 }
 
@@ -1266,7 +1267,7 @@ R+   coord_cartesian(ylim = c(-0.01, 1.02))
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-variable-plotCat-1}
+{\centering \includegraphics{rfs-variable-plotCat-1} 
 
 }
 
@@ -1339,15 +1340,15 @@ calculate a risk adjusted survival estimates
 \begin{Schunk}
 \begin{Sinput}
 R> xvar <- c(xvar, xvar.cat)
-R>
-R> time_index <- c(which(rfsrc_pbc$time.interest > 1)[1]-1,
-R+                 which(rfsrc_pbc$time.interest > 3)[1]-1,
+R> 
+R> time_index <- c(which(rfsrc_pbc$time.interest > 1)[1]-1,  
+R+                 which(rfsrc_pbc$time.interest > 3)[1]-1,  
 R+                 which(rfsrc_pbc$time.interest > 5)[1]-1)
 R> partial_pbc <- mclapply(rfsrc_pbc$time.interest[time_index],
 R+                         function(tm){
-R+                           plot.variable(rfsrc_pbc, surv.type = "surv",
+R+                           plot.variable(rfsrc_pbc, surv.type = "surv", 
 R+                                         time = tm, xvar.names = xvar,
-R+                                         partial = TRUE ,
+R+                                         partial = TRUE , 
 R+                                         show.plots = FALSE)
 R+                         })
 \end{Sinput}
@@ -1381,7 +1382,7 @@ by noting the divergence of curves as time progresses.
 \begin{Schunk}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-pbc-partial-panel-1}
+{\centering \includegraphics{rfs-pbc-partial-panel-1} 
 
 }
 
@@ -1408,7 +1409,7 @@ R+   theme(legend.position = c(0.1, 0.2))
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-pbc-partial-edema-1}
+{\centering \includegraphics{rfs-pbc-partial-edema-1} 
 
 }
 
@@ -1460,7 +1461,7 @@ risk adjusted estimates of survival along time in one dimension and the
 \begin{Schunk}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-timeSurface3d-1}
+{\centering \includegraphics{rfs-timeSurface3d-1} 
 
 }
 
@@ -1535,42 +1536,42 @@ R> ggint <- gg_interaction(rfsrc_pbc)
                     No. of variables: 17
   Variables sorted by minimal depth?: TRUE
 
-            bili albumin copper prothrombin chol edema platelet sgot  age
-bili        0.11    0.26   0.29        0.30 0.29  0.50     0.29 0.31 0.28
-albumin     0.33    0.17   0.37        0.39 0.38  0.66     0.37 0.39 0.37
-copper      0.36    0.38   0.19        0.40 0.41  0.66     0.41 0.40 0.39
-prothrombin 0.40    0.41   0.43        0.20 0.45  0.69     0.46 0.45 0.44
-chol        0.42    0.42   0.46        0.48 0.22  0.76     0.47 0.46 0.43
-edema       0.45    0.47   0.50        0.51 0.50  0.22     0.49 0.51 0.48
-platelet    0.49    0.50   0.53        0.54 0.52  0.80     0.22 0.53 0.51
-sgot        0.49    0.47   0.50        0.53 0.52  0.80     0.52 0.25 0.49
-age         0.41    0.44   0.47        0.50 0.48  0.79     0.48 0.46 0.25
-alk         0.55    0.55   0.57        0.60 0.57  0.83     0.59 0.59 0.55
-trig        0.56    0.55   0.57        0.59 0.57  0.84     0.58 0.57 0.55
-ascites     0.53    0.54   0.59        0.58 0.58  0.76     0.58 0.60 0.57
-stage       0.59    0.60   0.61        0.64 0.61  0.83     0.63 0.62 0.60
-hepatom     0.67    0.68   0.70        0.71 0.69  0.86     0.72 0.70 0.69
-spiders     0.81    0.82   0.84        0.84 0.84  0.94     0.83 0.82 0.81
-treatment   0.87    0.87   0.88        0.87 0.88  0.96     0.89 0.88 0.87
-sex         0.84    0.84   0.86        0.86 0.85  0.94     0.86 0.86 0.84
-             alk trig ascites stage hepatom spiders treatment  sex
-bili        0.31 0.35    0.65  0.45    0.60    0.62      0.61 0.66
-albumin     0.39 0.44    0.78  0.55    0.67    0.70      0.66 0.72
-copper      0.42 0.45    0.77  0.57    0.69    0.71      0.69 0.79
-prothrombin 0.45 0.48    0.81  0.61    0.72    0.76      0.72 0.79
-chol        0.46 0.50    0.86  0.63    0.77    0.76      0.72 0.81
-edema       0.50 0.55    0.80  0.64    0.73    0.75      0.75 0.81
-platelet    0.53 0.55    0.90  0.70    0.81    0.81      0.77 0.86
-sgot        0.51 0.53    0.90  0.67    0.79    0.79      0.76 0.84
-age         0.46 0.48    0.88  0.62    0.77    0.76      0.72 0.80
-alk         0.27 0.61    0.93  0.74    0.85    0.83      0.81 0.88
-trig        0.56 0.30    0.92  0.74    0.85    0.84      0.80 0.90
-ascites     0.59 0.62    0.34  0.69    0.77    0.80      0.80 0.83
-stage       0.62 0.64    0.91  0.35    0.84    0.83      0.81 0.87
-hepatom     0.71 0.71    0.91  0.80    0.43    0.88      0.85 0.89
-spiders     0.83 0.84    0.96  0.90    0.92    0.53      0.90 0.95
-treatment   0.87 0.88    0.99  0.94    0.96    0.95      0.55 0.97
-sex         0.86 0.86    0.98  0.91    0.94    0.95      0.92 0.60
+            bili albumin copper prothrombin edema platelet chol  age sgot
+bili        0.13    0.27   0.29        0.30  0.49     0.31 0.30 0.27 0.32
+albumin     0.33    0.17   0.37        0.38  0.65     0.39 0.39 0.37 0.40
+copper      0.35    0.37   0.19        0.39  0.63     0.40 0.41 0.38 0.40
+prothrombin 0.38    0.39   0.42        0.19  0.67     0.43 0.43 0.42 0.45
+edema       0.43    0.47   0.48        0.48  0.21     0.47 0.49 0.47 0.50
+platelet    0.50    0.50   0.52        0.56  0.80     0.22 0.56 0.51 0.54
+chol        0.43    0.43   0.47        0.48  0.76     0.47 0.23 0.45 0.48
+age         0.42    0.44   0.47        0.48  0.80     0.47 0.48 0.25 0.47
+sgot        0.47    0.48   0.51        0.54  0.80     0.51 0.52 0.49 0.25
+alk         0.54    0.55   0.57        0.59  0.84     0.55 0.57 0.55 0.56
+trig        0.53    0.57   0.57        0.60  0.86     0.59 0.60 0.55 0.59
+stage       0.58    0.60   0.60        0.61  0.84     0.62 0.62 0.60 0.62
+ascites     0.56    0.56   0.59        0.60  0.76     0.59 0.60 0.58 0.61
+hepatom     0.69    0.70   0.71        0.74  0.87     0.72 0.70 0.71 0.70
+spiders     0.80    0.81   0.81        0.83  0.94     0.83 0.83 0.82 0.82
+treatment   0.88    0.86   0.88        0.87  0.97     0.87 0.88 0.87 0.88
+sex         0.85    0.84   0.85        0.87  0.95     0.85 0.86 0.84 0.86
+             alk trig stage ascites hepatom spiders treatment  sex
+bili        0.32 0.34  0.44    0.68    0.60    0.63      0.61 0.68
+albumin     0.40 0.43  0.56    0.78    0.67    0.71      0.68 0.74
+copper      0.41 0.45  0.56    0.78    0.68    0.69      0.70 0.79
+prothrombin 0.44 0.47  0.60    0.80    0.72    0.74      0.71 0.78
+edema       0.50 0.54  0.62    0.81    0.71    0.75      0.75 0.80
+platelet    0.53 0.57  0.70    0.90    0.82    0.82      0.79 0.85
+chol        0.48 0.51  0.63    0.87    0.76    0.76      0.72 0.84
+age         0.47 0.47  0.64    0.89    0.76    0.76      0.73 0.82
+sgot        0.52 0.57  0.68    0.89    0.79    0.79      0.77 0.85
+alk         0.27 0.60  0.74    0.92    0.85    0.83      0.81 0.89
+trig        0.56 0.30  0.73    0.94    0.84    0.83      0.80 0.89
+stage       0.63 0.63  0.34    0.91    0.83    0.84      0.82 0.87
+ascites     0.60 0.63  0.71    0.35    0.76    0.80      0.79 0.83
+hepatom     0.71 0.74  0.82    0.93    0.44    0.88      0.87 0.90
+spiders     0.82 0.84  0.88    0.97    0.93    0.53      0.92 0.95
+treatment   0.87 0.88  0.93    0.99    0.94    0.95      0.56 0.98
+sex         0.86 0.87  0.90    0.98    0.94    0.95      0.93 0.61
 \end{Soutput}
 \end{Schunk}
 
@@ -1586,7 +1587,7 @@ R> plot(ggint, xvar = xvar)
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-interactionPanel-1}
+{\centering \includegraphics{rfs-interactionPanel-1} 
 
 }
 
@@ -1628,10 +1629,10 @@ class membership.
 \begin{Sinput}
 R> # Get variable dependence at 1 year
 R> ggvar <- gg_variable(rfsrc_pbc, time = 1)
-R>
+R> 
 R> # For labeling coplot membership
 R> ggvar$edema <- paste("edema = ", ggvar$edema, sep = "")
-R>
+R> 
 R> # Plot with linear smooth (method argument)
 R> var_dep <- plot(ggvar, xvar = "bili",
 R+                 alpha = 0.5) +
@@ -1642,12 +1643,12 @@ R+   theme(legend.position = "none") +
 R+   scale_color_manual(values = strCol, labels = event.labels) +
 R+   scale_shape_manual(values = event.marks, labels = event.labels) +
 R+   coord_cartesian(y = c(-.01,1.01))
-R>
+R> 
 R> var_dep
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-var_dep-1}
+{\centering \includegraphics{rfs-var_dep-1} 
 
 }
 
@@ -1667,7 +1668,7 @@ R> var_dep + facet_grid(~edema)
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-coplot_bilirubin-1}
+{\centering \includegraphics{rfs-coplot_bilirubin-1} 
 
 }
 
@@ -1701,7 +1702,7 @@ each.
 \begin{Schunk}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-albumin-coplot-1}
+{\centering \includegraphics{rfs-albumin-coplot-1} 
 
 }
 
@@ -1725,17 +1726,17 @@ previous coplot process, predicted survival as a function of the
 \begin{Sinput}
 R> # Find intervals with similar number of observations.
 R> bili_cts <-quantile_pts(ggvar$bili, groups = 6, intervals = TRUE)
-R>
+R> 
 R> # We need to move the minimal value so we include that observation
 R> bili_cts[1] <- bili_cts[1] - 1.e-7
-R>
+R> 
 R> # Create the conditional groups and add to the gg_variable object
 R> bili_grp <- cut(ggvar$bili, breaks = bili_cts)
 R> ggvar$bili_grp <- bili_grp
-R>
+R> 
 R> # Adjust naming for facets
 R> levels(ggvar$bili_grp) <- paste("bilirubin =", levels(bili_grp))
-R>
+R> 
 R> # plot.gg_variable
 R> plot(ggvar, xvar = "albumin", alpha = 0.5) +
 R+ #     method = "glm", se = FALSE) +
@@ -1748,7 +1749,7 @@ R+   coord_cartesian(ylim = c(-0.01,1.01))
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-bili-coplot-1}
+{\centering \includegraphics{rfs-bili-coplot-1} 
 
 }
 
@@ -1820,7 +1821,7 @@ R+                                         groups = ggvar$albumin_grp,
 R+                                         surv_type = "surv",
 R+                                         time = rfsrc_pbc$time.interest[time_index[1]],
 R+                                         show.plots = FALSE)
-R>
+R> 
 R> ggplot(partial_coplot_pbc, aes(x=bili, y=yhat, col=group, shape=group)) +
 R+   geom_smooth(se = FALSE) +
 R+   labs(x = st.labs["bili"], y = "Survival at 1 year (%)",
@@ -1828,7 +1829,7 @@ R+        color = "albumin", shape = "albumin")
 \end{Sinput}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-bili-albumin-1}
+{\centering \includegraphics{rfs-bili-albumin-1} 
 
 }
 
@@ -1851,7 +1852,7 @@ interval group membership in \autoref{fig:albumin-bili}.
 \begin{Schunk}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-albumin-bili-1}
+{\centering \includegraphics{rfs-albumin-bili-1} 
 
 }
 
@@ -1881,7 +1882,7 @@ on \texttt{bili} at \texttt{npts\ =\ 50} points with the
 \begin{Schunk}
 \begin{figure}[!htb]
 
-{\centering \includegraphics{rfs-surface3d-1}
+{\centering \includegraphics{rfs-surface3d-1} 
 
 }
 

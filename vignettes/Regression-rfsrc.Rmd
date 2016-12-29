@@ -3,12 +3,26 @@ author:
   - name: John Ehrlinger
     affiliation: Microsoft  
     address: >
-      1 Memorial Drive
-      Cambridge, MA 
-    email: jehrling@microsoft.com
-title: "ggRandomForests: Regression randomForestSRC"
+      One Memorial Drive
+      Cambridge, MA  02142
+    email: john.ehrlinger@gmail.com
+    url: https://github.com/ehrlinger/ggRandomForests
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
-output:
+title: "ggRandomForests: Regression randomForestSRC"
+abstract: >
+  Random Forests [@Breiman:2001] (RF) are a non-parametric statistical method requiring no distributional assumptions on covariate relation to the response. RF are a robust, nonlinear technique that optimizes predictive accuracy by fitting an ensemble of trees to stabilize model estimates. The `randomForestSRC` package [@Ishwaran:RFSRC:2014] is a unified treatment of Breiman's random forests for survival, regression and classification problems.\par
+
+  Predictive accuracy make RF an attractive alternative to parametric models, though complexity and interpretability of the forest hinder wider application of the method. We introduce the `ggRandomForests` package, tools for visually understand random forest models grown in `R` [@rcore] with the `randomForestSRC` package. The `ggRandomForests` package is structured to extract intermediate data objects from `randomForestSRC` objects and generates figures using the `ggplot2` [@Wickham:2009] graphics package\par
+
+  This document is structured as a tutorial for building random forests for regression with the `randomForestSRC` package and using the `ggRandomForests` package for investigating how the forest is constructed. We investigate the Boston Housing data [@Harrison:1978,@Belsley:1980]. We demonstrate random forest variable selection using Variable Importance (VIMP) [@Breiman:2001] and Minimal Depth [@Ishwaran:2010], a property derived from the construction of each tree within the forest. We will also demonstrate the use of variable dependence plots [@Friedman:2000] to aid interpretation RF results. We then examine variable interactions between covariates using a minimal depth interactions, and conditional variable dependence plots. The goal of the exercise is to demonstrate the strength of using Random Forest methods for both prediction and information retrieval in regression settings.\par
+
+  __keywords:__ random forest, regression, VIMP, minimal depth, R, randomForestSRC\par
+output:  
+  rticles::jss_article:
+    citation_package: natbib
+    fig_caption: yes
+    keep_tex: true
+    number_sections: true
   html_vignette:
     fig_caption: yes
   html_document:
@@ -30,14 +44,6 @@ vignette: >
 ---
 
 # Abtract
-
-Random Forests [@Breiman:2001] (RF) are a non-parametric statistical method requiring no distributional assumptions on covariate relation to the response. RF are a robust, nonlinear technique that optimizes predictive accuracy by fitting an ensemble of trees to stabilize model estimates. The `randomForestSRC` package [@Ishwaran:RFSRC:2014] is a unified treatment of Breiman's random forests for survival, regression and classification problems.
-
-Predictive accuracy make RF an attractive alternative to parametric models, though complexity and interpretability of the forest hinder wider application of the method. We introduce the `ggRandomForests` package, tools for visually understand random forest models grown in `R` [@rcore] with the `randomForestSRC` package. The `ggRandomForests` package is structured to extract intermediate data objects from `randomForestSRC` objects and generates figures using the `ggplot2` [@Wickham:2009] graphics package.
-
-This document is structured as a tutorial for building random forests for regression with the `randomForestSRC` package and using the `ggRandomForests` package for investigating how the forest is constructed. We investigate the Boston Housing data [@Harrison:1978,@Belsley:1980]. We demonstrate random forest variable selection using Variable Importance (VIMP) [@Breiman:2001] and Minimal Depth [@Ishwaran:2010], a property derived from the construction of each tree within the forest. We will also demonstrate the use of variable dependence plots [@Friedman:2000] to aid interpretation RF results. We then examine variable interactions between covariates using a minimal depth interactions, and conditional variable dependence plots. The goal of the exercise is to demonstrate the strength of using Random Forest methods for both prediction and information retrieval in regression settings.
-
-__keywords:__ random forest, regression, VIMP, minimal depth, R, randomForestSRC
 
 ```{r setup, include = FALSE, cache = FALSE, echo=FALSE}
 ## Not displayed ##
@@ -207,8 +213,7 @@ Because growing random forests are computationally expensive, and the `ggRandomF
 
 ```{r randomforest, echo=TRUE}
 # Load the data, from the call:
-# rfsrc_Boston <- rfsrc(medv~., data=Boston)
-data(rfsrc_Boston)
+rfsrc_Boston <- rfsrc(medv~., data=Boston)
 
 # print the forest summary
 rfsrc_Boston
@@ -277,8 +282,7 @@ The `randomForestSRC::var.select` call is again a computationally intensive func
 
 ```{r minimaldepth, echo=TRUE, fig.cap="Minimal Depth variables in rank order, most important at the top. Vertical dashed line indicates the maximal minimal depth for important variables.", fig.width=7, fig.height=5}
 # Load the data, from the call:
-# varsel_Boston <- var.select(rfsrc_Boston)
-data(varsel_Boston)
+varsel_Boston <- var.select(rfsrc_Boston)
 
 # Save the gg_minimal_depth object for later use.
 gg_md <- gg_minimal_depth(varsel_Boston)
@@ -351,11 +355,10 @@ Partial plots are another computationally intensive analysis, especially when th
 
 ```{r partial, echo=TRUE, fig.cap="Partial dependence panels. Risk adjusted variable dependence for variables in minimal depth rank order.", fig.width=7, fig.height=5}
 # Load the data, from the call:
-# partial_Boston <- plot.variable(rfsrc_Boston, 
-#                                 xvar=gg_md$topvars, 
-#                                 partial=TRUE, sorted=FALSE, 
-#                                 show.plots = FALSE )
-data(partial_Boston)
+partial_Boston <- plot.variable(rfsrc_Boston,
+                                xvar=gg_md$topvars,
+                                partial=TRUE, sorted=FALSE,
+                                show.plots = FALSE )
 
 # generate a list of gg_partial objects, one per xvar.
 gg_p <- gg_partial(partial_Boston)
@@ -380,8 +383,7 @@ The `gg_interaction` function wraps the `find.interaction` matrix for use with t
 
 ```{r interactions, echo=TRUE, fig.cap="Minimal depth variable interactions. Reference variables are marked with red cross in each panel. Higher values indicate lower interactivity with reference variable.", fig.width=7, fig.height=5}
 # Load the data, from the call:
-# interaction_Boston <- find.interactions(rfsrc_Boston)
-data(interaction_Boston)
+interaction_Boston <- find.interaction(rfsrc_Boston)
 
 # Plot the results in a single panel.
 plot(gg_interaction(interaction_Boston), 
@@ -472,7 +474,7 @@ By characterizing conditional plots as stratified variable dependence plots, the
 
 The following code block will generate the data object for creating partial dependence coplot of the predicted median home value as a function of `lstat` conditional on membership within the 6 groups of `rm` "intervals" that we examined in the previous section.
 
-```{r prtl-copl, echo=TRUE, eval=FALSE}
+```{r prtl-copl, echo=TRUE}
 partial_coplot_Boston <- gg_partial_coplot(rfsrc_Boston, xvar="lstat", 
                                            groups=rm_grp,
                                            show.plots=FALSE)
@@ -482,7 +484,6 @@ Since the `gg_partial_coplot` makes a call to `randomForestSRC::plot.variable` f
 
 ```{r prtl-coplots, echo=TRUE, fig.cap="Partial Coplots. Risk adjusted predicted median value as a function of Lower Status, conditional on groups of average number of rooms.", fig.width=7, fig.height=5}
 # Load the stored partial coplot data.
-data(partial_coplot_Boston)
 
 # # Partial coplot
 # plot(partial_coplot_Boston) + ## Looks like a dangling or missing '+' characer in the plot.gg_partial_coplot
@@ -500,16 +501,13 @@ We can view the partial coplot curves as slices along a surface viewed into the 
 
 We also construct the complement view, for partial dependence coplot of the predicted median home value as a function of `rm` conditional on membership within the 6 groups of `lstat`  "intervals", and cache the following `gg_partial_coplot` data call, and plot the results with the `plot.gg_variable` call:
 
-```{r prtl-copl2, echo=TRUE, eval=FALSE}
+```{r prtl-copl2, echo=TRUE}
 partial_coplot_Boston2 <- gg_partial_coplot(rfsrc_Boston, xvar="rm", 
                                             groups=lstat_grp,
                                             show.plots=FALSE)
 ```
 
 ```{r prtl-coplots2, echo=TRUE, fig.cap="Partial Coplots. Risk adjusted predicted median value as a function of average number of rooms, conditional on groups of percentage of lower status population.", fig.width=7, fig.height=5}
-# Load the stored partial coplot data.
-data(partial_coplot_Boston2)
-
 # Partial coplot
 #plot(partial_coplot_Boston2)+ ## again plot.gg_partial_coplot
 ggplot(partial_coplot_Boston, aes(x=lstat, y=yhat, col=group, shape=group))+
@@ -536,7 +534,7 @@ We use the following data call to generate the partial plots with the `randomFor
 
 The cached data is stored in the `partial_Boston_surf` data set in the `ggRandomForests` package. The data set is a `list` of 50 `plot.variable` objects. This code block loads the data, converts the `plot.variable` objects to `gg_partial` objects, attaches numeric values for the `rm` variable, and generates the contour plot.
 
-```{r prtl-surface, echo=TRUE, eval=FALSE}
+```{r prtl-surface, echo=TRUE}
 # Generate the gg_partial_coplot data object
 system.time(partial_Boston_surf <- lapply(rm_pts, function(ct){
   rfsrc_Boston$xvar$rm <- ct
@@ -549,8 +547,6 @@ system.time(partial_Boston_surf <- lapply(rm_pts, function(ct){
 ```
 
 ```{r contour3d, echo=TRUE, fig.cap="Partial coplot contour plot. Contours of median home value along the lstat/rm plane.", fig.width=7, fig.height=5}
-# Load the stored partial coplot data.
-data(partial_Boston_surf)
 
 # Instead of groups, we want the raw rm point values,
 # To make the dimensions match, we need to repeat the values
