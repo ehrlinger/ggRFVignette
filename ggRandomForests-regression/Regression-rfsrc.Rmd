@@ -1,10 +1,6 @@
 ---
 author:
   - name: John Ehrlinger
-    affiliation: Microsoft, Machine Learning COGS
-    address: >
-      One Memorial Drive
-      Cambridge, MA 02142
     email: john.ehrlinger@gmail.com
     url: https://github.com/ehrlinger/ggRandomForests
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
@@ -51,7 +47,7 @@ opts_chunk$set(echo = TRUE, # Change this to TRUE if you want to see all the cod
 # Setup the R environment
 options(object.size = Inf, expressions = 100000, memory = Inf, 
         replace.assign = TRUE, width = 90)
-options(mc.cores = 1, rf.cores = 0)
+options(mc.cores = 1, rf.cores = -1)
 ```
 
 # About this document

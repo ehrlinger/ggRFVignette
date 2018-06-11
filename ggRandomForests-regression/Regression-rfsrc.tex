@@ -5,10 +5,13 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 \author{
-John Ehrlinger\\Microsoft, Machine Learning COGS
+John Ehrlinger\\
 }
 \title{\pkg{ggRandomForests}: Regression \pkg{randomForestSRC}}
-\Keywords{random forest, regression, VIMP, minimal depth, \proglang{R}, \pkg{randomForest}, \pkg{randomForestSRC}, \pkg{ggRandomForests}}
+
+\Plainauthor{John Ehrlinger}
+\Plaintitle{ggRandomForests: Regression randomForestSRC}
+\Shorttitle{\pkg{ggRandomForests}: Regression \pkg{randomForestSRC}}
 
 \Abstract{
 Random Forests \citep{Breiman:2001} (RF) are a non-parametric
@@ -44,9 +47,7 @@ exercise is to demonstrate the strength of using Random Forest methods
 for both prediction and information retrieval in regression settings.
 }
 
-\Plainauthor{John Ehrlinger}
-\Plaintitle{ggRandomForests: Regression randomForestSRC}
-\Shorttitle{\pkg{ggRandomForests}: Regression \pkg{randomForestSRC}}
+\Keywords{random forest, regression, VIMP, minimal depth, \proglang{R}, \pkg{randomForest}, \pkg{randomForestSRC}, \pkg{ggRandomForests}}
 \Plainkeywords{random forest, regression, VIMP, minimal depth, R, randomForest, randomForestSRC, ggRandomForests}
 
 %% publication information
@@ -54,23 +55,22 @@ for both prediction and information retrieval in regression settings.
 %% \Issue{9}
 %% \Month{June}
 %% \Year{2012}
-\Submitdate{}
+%% \Submitdate{}
 %% \Acceptdate{2012-06-04}
 
 \Address{
-    John Ehrlinger\\
-  Microsoft, Machine Learning COGS\\
-  One Memorial Drive Cambridge, MA 02142\\
-  E-mail: \href{mailto:john.ehrlinger@gmail.com}{\nolinkurl{john.ehrlinger@gmail.com}}\\
-  URL: \url{https://github.com/ehrlinger/ggRandomForests}\\~\\
   }
 
-\usepackage{natbib} \usepackage{booktabs} \usepackage{longtable}
-\usepackage{amsmath} \usepackage{amsthm, amssymb}
+\usepackage{natbib}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{amsthm, amssymb}
 
 \begin{document}
 
-\section{About this document}\label{about-this-document}
+\hypertarget{about-this-document}{%
+\section{About this document}\label{about-this-document}}
 
 This document is a package vignette for the \pkg{ggRandomForests}
 package for ``Visually Exploring Random Forests''
@@ -106,34 +106,31 @@ figures into document text. Throughout this document, \texttt{R} code
 will be displayed in \emph{code blocks} as shown below. This code block
 loads the \texttt{R} packages required to run the source code listed in
 code blocks throughout the remainder of this document.
+\textbackslash{}begin\{CodeChunk\}
 
-\begin{CodeChunk}
-
-\begin{CodeInput}
-R> ################## Load packages ##################
-R> library("ggplot2")         # Graphics engine
-R> library("RColorBrewer")    # Nice color palettes
-R> library("plot3D")          # for 3d surfaces. 
-R> library("dplyr")           # Better data manipulations
-R> library("tidyr")           # gather variables into long format
-R> library("parallel")        # mclapply for multicore processing
-R> 
-R> # Analysis packages.
-R> library("randomForestSRC") # random forests for survival, regression and 
-R>                            # classification
-R> library("ggRandomForests") # ggplot2 random forest figures (This!)
-R> 
-R> ################ Default Settings ##################
-R> theme_set(theme_bw())     # A ggplot2 theme with white background
-R> 
-R> ## Set open circle for censored, and x for events 
-R> event.marks <- c(1, 4)
-R> event.labels <- c(FALSE, TRUE)
-R> 
-R> ## We want red for death events, so reorder this set.
-R> strCol <- brewer.pal(3, "Set1")[c(2,1,3)]
-\end{CodeInput}
-\end{CodeChunk}
+\textbackslash{}begin\{CodeInput\} R\textgreater{}
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# Load packages
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# R\textgreater{}
+library(``ggplot2'') \# Graphics engine R\textgreater{}
+library(``RColorBrewer'') \# Nice color palettes R\textgreater{}
+library(``plot3D'') \# for 3d surfaces. R\textgreater{}
+library(``dplyr'') \# Better data manipulations R\textgreater{}
+library(``tidyr'') \# gather variables into long format R\textgreater{}
+library(``parallel'') \# mclapply for multicore processing
+R\textgreater{} R\textgreater{} \# Analysis packages. R\textgreater{}
+library(``randomForestSRC'') \# random forests for survival, regression
+and R\textgreater{} \# classification R\textgreater{}
+library(``ggRandomForests'') \# ggplot2 random forest figures (This!)
+R\textgreater{} R\textgreater{} \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# Default
+Settings \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# R\textgreater{}
+theme\_set(theme\_bw()) \# A ggplot2 theme with white background
+R\textgreater{} R\textgreater{} \#\# Set open circle for censored, and x
+for events R\textgreater{} event.marks \textless{}- c(1, 4)
+R\textgreater{} event.labels \textless{}- c(FALSE, TRUE) R\textgreater{}
+R\textgreater{} \#\# We want red for death events, so reorder this set.
+R\textgreater{} strCol \textless{}- brewer.pal(3,
+``Set1''){[}c(2,1,3){]} \textbackslash{}end\{CodeInput\}
+\textbackslash{}end\{CodeChunk\}
 
 This vignette is available within the \pkg{ggRandomForests} package on
 the Comprehensive R Archive Network (CRAN)
@@ -153,7 +150,8 @@ available on GitHub (\url{https://github.com}). We invite comments,
 feature requests and bug reports for this package at
 (\url{https://github.com/ehrlinger/ggRandomForests}).
 
-\section{Introduction}\label{introduction}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
 Random Forests \citep{Breiman:2001} (RF) are a fully non-parametric
 statistical method which requires no distributional or functional
@@ -241,7 +239,8 @@ and partial dependence coplots (\autoref{partial-dependence-coplots})
 \citep[\citet{cleveland:1993}]{chambers:1992} to examine these
 interactions graphically.
 
-\section{Data: Boston Housing Values}\label{data-boston-housing-values}
+\hypertarget{data-boston-housing-values}{%
+\section{Data: Boston Housing Values}\label{data-boston-housing-values}}
 
 The Boston Housing data is a standard benchmark data set for regression
 models. It contains data for 506 census tracts of Boston from the 1970
@@ -300,7 +299,8 @@ The main objective of the Boston Housing data is to investigate
 variables associated with predicting the median value of homes
 (continuous \texttt{medv} response) within 506 suburban areas of Boston.
 
-\subsection{Exploratory Data Analysis}\label{exploratory-data-analysis}
+\hypertarget{exploratory-data-analysis}{%
+\subsection{Exploratory Data Analysis}\label{exploratory-data-analysis}}
 
 It is good practice to view your data before beginning an analysis,
 what\citep{Tukey:1977} refers to as Exploratory Data Analysis (EDA). To
@@ -325,20 +325,19 @@ indicated by the rug marks along the x-axis, of which there are none in
 this data. We used the Boston housing response variable, the median
 value of homes (\texttt{medv}), for X variable.
 
-\begin{CodeChunk}
+\textbackslash{}begin\{CodeChunk\}
 
-\begin{CodeInput}
-R> # Use tidyr::gather to transform the data into long format.
-R> dta <- gather(Boston, variable, value, -medv, -chas)
-R> 
-R> # plot panels for each covariate colored by the logical chas variable.
-R> ggplot(dta)+
-R+   geom_point(alpha=0.4, aes(x=medv, y=value, color=chas))+
-R+   geom_smooth(aes(x=medv, y=value), se=FALSE)+ 
-R+   labs(y="", x=st.labs["medv"]) +
-R+   scale_color_brewer(palette="Set2")+
-R+   facet_wrap(~variable, scales="free_y", ncol=3)
-\end{CodeInput}
+\textbackslash{}begin\{CodeInput\} R\textgreater{} \# Use tidyr::gather
+to transform the data into long format. R\textgreater{} dta \textless{}-
+gather(Boston, variable, value, -medv, -chas) R\textgreater{}
+R\textgreater{} \# plot panels for each covariate colored by the logical
+chas variable. R\textgreater{} ggplot(dta)+ R+ geom\_point(alpha=0.4,
+aes(x=medv, y=value, color=chas))+ R+ geom\_smooth(aes(x=medv, y=value),
+se=FALSE)+ R+ labs(y="``, x=st.labs{[}"medv"{]}) + R+
+scale\_color\_brewer(palette=''Set2``)+ R+
+facet\_wrap(\textasciitilde{}variable, scales=''free\_y", ncol=3)
+\textbackslash{}end\{CodeInput\}
+
 \begin{figure}
 
 {\centering \includegraphics{Regression-rfsrc_files/figure-latex/eda-1} 
@@ -347,7 +346,8 @@ R+   facet_wrap(~variable, scales="free_y", ncol=3)
 
 \caption[EDA variable plots]{EDA variable plots. Points indicate variable value against the median home value variable. Points are colored according to the chas variable.}\label{fig:eda}
 \end{figure}
-\end{CodeChunk}
+
+\textbackslash{}end\{CodeChunk\}
 
 This figure is loosely related to a pairs scatter plot
 \citep{Becker:1988}, but in this case we only examine the relation
@@ -357,7 +357,8 @@ model results. It's pretty obvious from this figure that we should find
 a strong relation between median home values and the \texttt{lstat} and
 \texttt{rm} variables.
 
-\section{Random Forest - Regression}\label{random-forest---regression}
+\hypertarget{random-forest---regression}{%
+\section{Random Forest - Regression}\label{random-forest---regression}}
 
 A Random Forest is grown by \emph{bagging} \citep{Breiman:1996} a
 collection of \emph{classification and regression trees} (CART)
@@ -397,31 +398,14 @@ objects throughout this document. We include the cached objects as data
 sets in the \pkg{ggRandomForests} package. The actual \texttt{rfsrc}
 calls are included in comments within code blocks.
 
-\begin{CodeChunk}
+\textbackslash{}begin\{CodeChunk\}
 
-\begin{CodeInput}
-R> # Load the data, from the call:
-R> rfsrc_Boston <- rfsrc(medv~., data=Boston, 
-R+                       importance = TRUE, tree.err = TRUE)
-R> 
-R> # print the forest summary
-R> rfsrc_Boston
-\end{CodeInput}
-
-\begin{CodeOutput}
-                         Sample size: 506
-                     Number of trees: 1000
-          Minimum terminal node size: 5
-       Average no. of terminal nodes: 104.22
-No. of variables tried at each split: 5
-              Total no. of variables: 13
-                            Analysis: RF-R
-                              Family: regr
-                      Splitting rule: mse
-                % variance explained: 87.23
-                          Error rate: 10.8
-\end{CodeOutput}
-\end{CodeChunk}
+\textbackslash{}begin\{CodeInput\} R\textgreater{} \# Load the data,
+from the call: R\textgreater{} rfsrc\_Boston \textless{}-
+rfsrc(medv\textasciitilde{}., data=Boston, R+ importance = TRUE,
+tree.err = TRUE) R\textgreater{} R\textgreater{} \# print the forest
+summary R\textgreater{} rfsrc\_Boston \textbackslash{}end\{CodeInput\}
+\textbackslash{}end\{CodeChunk\}
 
 The \texttt{randomForestSRC::print.rfsrc} summary details the parameters
 used for the \texttt{rfsrc} call described above, and returns variance
@@ -432,8 +416,9 @@ was constructed for the continuous \texttt{medv} variable using
 5 candidate variables at each node split, and terminating nodes with no
 fewer than 5 observations.
 
+\hypertarget{generalization-error-estimates}{%
 \subsection{Generalization error
-estimates}\label{generalization-error-estimates}
+estimates}\label{generalization-error-estimates}}
 
 One advantage of Random Forests is a built in generalization error
 estimate. Each bootstrap sample selects approximately 63.2\% of the
@@ -456,13 +441,13 @@ block first creates a \texttt{gg\_error} object, then uses the
 \texttt{plot.gg\_error} function to create a \texttt{ggplot} object for
 display.
 
-\begin{CodeChunk}
+\textbackslash{}begin\{CodeChunk\}
 
-\begin{CodeInput}
-R> # Plot the OOB errors against the growth of the forest.
-R> gg_e <- gg_error(rfsrc_Boston)
-R> plot(gg_e)
-\end{CodeInput}
+\textbackslash{}begin\{CodeInput\} R\textgreater{} \# Plot the OOB
+errors against the growth of the forest. R\textgreater{} gg\_e
+\textless{}- gg\_error(rfsrc\_Boston) R\textgreater{} plot(gg\_e)
+\textbackslash{}end\{CodeInput\}
+
 \begin{figure}
 
 {\centering \includegraphics{Regression-rfsrc_files/figure-latex/error-1} 
@@ -471,7 +456,8 @@ R> plot(gg_e)
 
 \caption[Random forest generalization error]{Random forest generalization error. OOB error convergence along the number of trees in the forest.}\label{fig:error}
 \end{figure}
-\end{CodeChunk}
+
+\textbackslash{}end\{CodeChunk\}
 
 This figure demonstrates that it does not take a large number of trees
 to stabilize the forest prediction error estimate. However, to ensure
@@ -479,7 +465,8 @@ that each variable has enough of a chance to be included in the forest
 prediction process, we do want to create a rather large random forest of
 trees.
 
-\subsection{Random Forest Prediction}\label{random-forest-prediction}
+\hypertarget{random-forest-prediction}{%
+\subsection{Random Forest Prediction}\label{random-forest-prediction}}
 
 The \texttt{gg\_rfsrc} function extracts the OOB prediction estimates
 from the random forest. This code block executes the the data extraction
@@ -490,13 +477,13 @@ the plot object. Each of the \pkg{ggRandomForests} plot commands return
 \texttt{ggplot} objects, which we can also store for modification or
 reuse later in the analysis.
 
-\begin{CodeChunk}
+\textbackslash{}begin\{CodeChunk\}
 
-\begin{CodeInput}
-R> # Plot predicted median home values.
-R> plot(gg_rfsrc(rfsrc_Boston), alpha=.5)+
-R+   coord_cartesian(ylim=c(5,49))
-\end{CodeInput}
+\textbackslash{}begin\{CodeInput\} R\textgreater{} \# Plot predicted
+median home values. R\textgreater{} plot(gg\_rfsrc(rfsrc\_Boston),
+alpha=.5)+ R+ coord\_cartesian(ylim=c(5,49))
+\textbackslash{}end\{CodeInput\}
+
 \begin{figure}
 
 {\centering \includegraphics{Regression-rfsrc_files/figure-latex/rfsrc-1} 
@@ -505,7 +492,8 @@ R+   coord_cartesian(ylim=c(5,49))
 
 \caption[OOB predicted median home values]{OOB predicted median home values. Points are jittered to help visualize predictions for each observation. Boxplot indicates the distribution of the predicted values.}\label{fig:rfsrc}
 \end{figure}
-\end{CodeChunk}
+
+\textbackslash{}end\{CodeChunk\}
 
 The \texttt{gg\_rfsrc} plot shows the predicted median home value, one
 point for each observation in the training set. The points are jittered
@@ -517,7 +505,8 @@ analysis the figure is another model sanity check, as we are more
 interested in exploring the \textbf{why} questions for these
 predictions.
 
-\section{Variable Selection}\label{variable-selection}
+\hypertarget{variable-selection}{%
+\section{Variable Selection}\label{variable-selection}}
 
 Random forests are not parsimonious, but use all variables available in
 the construction of a response predictor. Also, unlike parametric
@@ -531,7 +520,8 @@ explore the RF selection process, Variable Importance
 (\textbackslash{}autoref\{variable-importance) and Minimal Depth
 (\textbackslash{}autoref\{minimal-depth).
 
-\subsection{Variable Importance}\label{variable-importance}
+\hypertarget{variable-importance}{%
+\subsection{Variable Importance}\label{variable-importance}}
 
 \emph{Variable importance} (VIMP) was originally defined for CART using
 a measure involving surrogate variables (see Chapter 5 of
@@ -560,12 +550,13 @@ at the top, to smallest (Charles River) at the bottom. VIMP measures are
 shown using bars to compare the scale of the error increase under
 permutation.
 
-\begin{CodeChunk}
+\textbackslash{}begin\{CodeChunk\}
 
-\begin{CodeInput}
-R> # Plot the VIMP rankings of independent variables.
-R> plot(gg_vimp(rfsrc_Boston), lbls=st.labs)
-\end{CodeInput}
+\textbackslash{}begin\{CodeInput\} R\textgreater{} \# Plot the VIMP
+rankings of independent variables. R\textgreater{}
+plot(gg\_vimp(rfsrc\_Boston), lbls=st.labs)
+\textbackslash{}end\{CodeInput\}
+
 \begin{figure}
 
 {\centering \includegraphics{Regression-rfsrc_files/figure-latex/vimp-1} 
@@ -574,7 +565,8 @@ R> plot(gg_vimp(rfsrc_Boston), lbls=st.labs)
 
 \caption[Random forest VIMP plot]{Random forest VIMP plot. Bars are colored by sign of VIMP, longer blue bars indicate more important variables.}\label{fig:vimp}
 \end{figure}
-\end{CodeChunk}
+
+\textbackslash{}end\{CodeChunk\}
 
 For our random forest, the top two variables (\texttt{lstat} and
 \texttt{rm}) have the largest VIMP, with a sizable difference to the
@@ -590,7 +582,8 @@ measure. We use the \texttt{lbls} argument to pass a named
 \texttt{plot.gg\_vimp} function, replacing the often terse variable
 names used by default.
 
-\subsection{Minimal Depth}\label{minimal-depth}
+\hypertarget{minimal-depth}{%
+\subsection{Minimal Depth}\label{minimal-depth}}
 
 In VIMP, prognostic risk factors are determined by testing the forest
 prediction under alternative data settings, ranking the most important
@@ -633,57 +626,16 @@ we use in the \texttt{gg\_minimal\_depth} call. We again use the cached
 object strategy here to save computational time. The \texttt{var.select}
 call is included in the comment of this code block.
 
-\begin{CodeChunk}
+\textbackslash{}begin\{CodeChunk\}
 
-\begin{CodeInput}
-R> # Load the data, from the call:
-R> varsel_Boston <- var.select(rfsrc_Boston)
-\end{CodeInput}
+\textbackslash{}begin\{CodeInput\} R\textgreater{} \# Load the data,
+from the call: R\textgreater{} varsel\_Boston \textless{}-
+var.select(rfsrc\_Boston) R\textgreater{} R\textgreater{} \# Save the
+gg\_minimal\_depth object for later use. R\textgreater{} gg\_md
+\textless{}- gg\_minimal\_depth(varsel\_Boston) R\textgreater{}
+R\textgreater{} \# plot the object R\textgreater{} plot(gg\_md,
+lbls=st.labs) \textbackslash{}end\{CodeInput\}
 
-\begin{CodeOutput}
-minimal depth variable selection ...
-
-
------------------------------------------------------------
-family             : regr 
-var. selection     : Minimal Depth 
-conservativeness   : medium 
-x-weighting used?  : TRUE 
-dimension          : 13 
-sample size        : 506 
-ntree              : 1000 
-nsplit             : 0 
-mtry               : 5 
-nodesize           : 5 
-refitted forest    : FALSE 
-model size         : 11 
-depth threshold    : 6.7242 
-PE (true OOB)      : 10.8032 
-
-
-Top variables:
-        depth   vimp
-lstat   1.135 58.948
-rm      1.221 36.781
-crim    2.516  7.685
-nox     2.555  8.676
-dis     2.573  5.834
-ptratio 2.947  6.004
-age     3.544  3.293
-tax     3.644  3.497
-black   3.767  1.135
-indus   3.798  5.749
-rad     6.117  1.251
------------------------------------------------------------
-\end{CodeOutput}
-
-\begin{CodeInput}
-R> # Save the gg_minimal_depth object for later use.
-R> gg_md <- gg_minimal_depth(varsel_Boston)
-R> 
-R> # plot the object
-R> plot(gg_md, lbls=st.labs)
-\end{CodeInput}
 \begin{figure}
 
 {\centering \includegraphics{Regression-rfsrc_files/figure-latex/minimaldepth-1} 
@@ -692,7 +644,8 @@ R> plot(gg_md, lbls=st.labs)
 
 \caption[Minimal Depth variables in rank order, most important at the top]{Minimal Depth variables in rank order, most important at the top. Vertical dashed line indicates the maximal minimal depth for important variables.}\label{fig:minimaldepth}
 \end{figure}
-\end{CodeChunk}
+
+\textbackslash{}end\{CodeChunk\}
 
 In general, the selection of variables according to VIMP is to rather
 arbitrarily examine the values, looking for some point along the ranking
@@ -715,13 +668,13 @@ depth and VIMP. In this call, we plot the stored
 equivalent to calling \texttt{plot.gg\_minimal\_vimp(varsel\_Boston)} or
 \texttt{plot(gg\_minimal\_vimp(varsel\_Boston))}.
 
-\begin{CodeChunk}
+\textbackslash{}begin\{CodeChunk\}
 
-\begin{CodeInput}
-R> # gg_minimal_depth objects contain information about
-R> # both minimal depth and VIMP.
-R> plot(gg_minimal_vimp(gg_md))
-\end{CodeInput}
+\textbackslash{}begin\{CodeInput\} R\textgreater{} \# gg\_minimal\_depth
+objects contain information about R\textgreater{} \# both minimal depth
+and VIMP. R\textgreater{} plot(gg\_minimal\_vimp(gg\_md))
+\textbackslash{}end\{CodeInput\}
+
 \begin{figure}
 
 {\centering \includegraphics{Regression-rfsrc_files/figure-latex/minimalvimp-1} 
@@ -730,7 +683,8 @@ R> plot(gg_minimal_vimp(gg_md))
 
 \caption[Comparing Minimal Depth and Vimp rankings]{Comparing Minimal Depth and Vimp rankings. Points on the red dashed line are ranked equivalently, points below have higher VIMP, those above have higher minimal depth ranking. Variables are colored by the sign of the VIMP measure.}\label{fig:minimalvimp}
 \end{figure}
-\end{CodeChunk}
+
+\textbackslash{}end\{CodeChunk\}
 
 The points along the red dashed line indicates where the measures are in
 agreement. Points above the red dashed line are ranked higher by VIMP
@@ -749,8 +703,9 @@ which agrees with our expectation from the Data: Boston Housing Values
 document. We now turn to investigating how these, and other variables,
 are related to the predicted response.
 
+\hypertarget{responsevariable-dependence}{%
 \section{Response/Variable
-Dependence}\label{responsevariable-dependence}
+Dependence}\label{responsevariable-dependence}}
 
 As random forests are not a parsimonious methodology, we can use the
 minimal depth and VIMP measures to reduce the number of variables we
@@ -770,7 +725,8 @@ easy to generate, and Partial Dependence
 (\textbackslash{}autoref\{partial-dependence) plots are computationally
 intensive but give us a risk adjusted look at the dependence.
 
-\subsection{Variable Dependence}\label{variable-dependence}
+\hypertarget{variable-dependence}{%
+\subsection{Variable Dependence}\label{variable-dependence}}
 
 Variable dependence plots show the predicted response as a function of a
 covariate of interest, where each observation is represented by a point
@@ -838,12 +794,12 @@ Charles river variable has the lowest importance scores in both VIMP and
 minimal depth measures, we include the variable dependence plot as an
 example of categorical variable dependence.
 
-\begin{CodeChunk}
+\textbackslash{}begin\{CodeChunk\}
 
-\begin{CodeInput}
-R> plot(gg_v, xvar="chas", alpha=.4)+
-R+   labs(y=st.labs["medv"])
-\end{CodeInput}
+\textbackslash{}begin\{CodeInput\} R\textgreater{} plot(gg\_v,
+xvar=``chas'', alpha=.4)+ R+ labs(y=st.labs{[}``medv''{]})
+\textbackslash{}end\{CodeInput\}
+
 \begin{figure}
 
 {\centering \includegraphics{Regression-rfsrc_files/figure-latex/chas-1} 
@@ -856,7 +812,8 @@ R+   labs(y=st.labs["medv"])
 \begin{CodeInput}
 R> # , points=FALSE, se=FALSE, notch=TRUE
 \end{CodeInput}
-\end{CodeChunk}
+
+\textbackslash{}end\{CodeChunk\}
 
 The figure shows that most housing tracts do not border the Charles
 river (\texttt{chas=FALSE}), and comparing the distributions of the
@@ -865,7 +822,8 @@ home values. This reinforces the findings in both VIMP and Minimal
 depth, the Charles river variable has very little impact on the forest
 prediction of median home values.
 
-\subsection{Partial Dependence}\label{partial-dependence}
+\hypertarget{partial-dependence}{%
+\subsection{Partial Dependence}\label{partial-dependence}}
 
 Partial variable dependence plots are a risk adjusted alternative to
 variable dependence. Partial plots are generated by integrating out the
@@ -920,7 +878,8 @@ associated with increasing median home values. However, we may also be
 interested in investigating how these variables work together to help
 improve the random forest prediction of median home values.
 
-\section{Variable Interactions}\label{variable-interactions}
+\hypertarget{variable-interactions}{%
+\section{Variable Interactions}\label{variable-interactions}}
 
 Using the different variable dependence measures, it is also possible to
 calculate measures of pairwise interactions among variables. Recall that
@@ -947,28 +906,6 @@ we're interested in looking at. We again use the cache strategy, and
 collect the figures together using the \texttt{panel=TRUE} option.
 
 \begin{CodeChunk}
-
-\begin{CodeOutput}
-
-                              Method: maxsubtree
-                    No. of variables: 13
-  Variables sorted by minimal depth?: TRUE
-
-        lstat   rm crim  nox  dis ptratio  age black  tax indus  rad   zn chas
-lstat    0.07 0.15 0.17 0.20 0.17    0.25 0.22  0.25 0.26  0.30 0.42 0.60 0.71
-rm       0.15 0.08 0.21 0.23 0.19    0.26 0.23  0.25 0.26  0.31 0.41 0.59 0.73
-crim     0.21 0.24 0.15 0.30 0.26    0.47 0.27  0.31 0.47  0.47 0.65 0.78 0.80
-nox      0.24 0.28 0.28 0.17 0.29    0.49 0.34  0.36 0.50  0.54 0.66 0.78 0.83
-dis      0.22 0.22 0.28 0.34 0.17    0.39 0.29  0.31 0.40  0.43 0.59 0.72 0.82
-ptratio  0.28 0.26 0.37 0.43 0.34    0.20 0.34  0.38 0.43  0.47 0.60 0.73 0.84
-age      0.27 0.27 0.32 0.42 0.31    0.47 0.23  0.34 0.46  0.46 0.63 0.78 0.83
-black    0.34 0.35 0.40 0.52 0.39    0.58 0.38  0.25 0.59  0.58 0.70 0.86 0.88
-tax      0.36 0.32 0.42 0.51 0.40    0.50 0.41  0.45 0.25  0.56 0.65 0.76 0.88
-indus    0.39 0.37 0.45 0.55 0.45    0.55 0.43  0.47 0.54  0.25 0.70 0.79 0.86
-rad      0.65 0.62 0.68 0.78 0.68    0.77 0.68  0.70 0.77  0.77 0.40 0.91 0.97
-zn       0.83 0.79 0.86 0.89 0.85    0.89 0.83  0.86 0.89  0.89 0.94 0.56 0.98
-chas     0.82 0.82 0.85 0.90 0.86    0.91 0.85  0.86 0.92  0.92 0.94 0.98 0.66
-\end{CodeOutput}
 \begin{figure}
 
 {\centering \includegraphics{Regression-rfsrc_files/figure-latex/interactions-1} 
@@ -993,7 +930,8 @@ interaction of \texttt{lstat} with the \texttt{rm} variable shown in the
 both measures, this interactive measure indicates the strongest
 connection between variables.
 
-\section{Coplots}\label{coplots}
+\hypertarget{coplots}{%
+\section{Coplots}\label{coplots}}
 
 Conditioning plots (coplots)
 \citep[\citet{cleveland:1993}]{chambers:1992} are a powerful
@@ -1099,8 +1037,9 @@ could then be used to generate the panel plot, with panels ordered
 according to the factor levels of the grouping variable. We leave this
 as an exercise for the reader.
 
+\hypertarget{partial-dependence-coplots}{%
 \subsection{Partial dependence
-coplots}\label{partial-dependence-coplots}
+coplots}\label{partial-dependence-coplots}}
 
 By characterizing conditional plots as stratified variable dependence
 plots, the next logical step would be to generate an analogous
@@ -1125,14 +1064,12 @@ partial dependence coplot of the predicted median home value as a
 function of \texttt{lstat} conditional on membership within the 6 groups
 of \texttt{rm} ``intervals'' that we examined in the previous section.
 
-\begin{CodeChunk}
+\textbackslash{}begin\{CodeChunk\}
 
-\begin{CodeInput}
-R> partial_coplot_Boston <- gg_partial_coplot(rfsrc_Boston, xvar="lstat", 
-R+                                            groups=rm_grp,
-R+                                            show.plots=FALSE)
-\end{CodeInput}
-\end{CodeChunk}
+\textbackslash{}begin\{CodeInput\} R\textgreater{}
+partial\_coplot\_Boston \textless{}- gg\_partial\_coplot(rfsrc\_Boston,
+xvar=``lstat'', R+ groups=rm\_grp, R+ show.plots=FALSE)
+\textbackslash{}end\{CodeInput\} \textbackslash{}end\{CodeChunk\}
 
 Since the \texttt{gg\_partial\_coplot} makes a call to
 \texttt{randomForestSRC::plot.variable} for each group (6) in the
@@ -1143,19 +1080,16 @@ variable, and use the \texttt{palette="Set1"} from the
 \texttt{RColorBrewer} package \citep{rcolorbrewer:2014} to choose a nice
 color theme for displaying the six curves.
 
-\begin{CodeChunk}
+\textbackslash{}begin\{CodeChunk\}
 
-\begin{CodeInput}
-R> # Load the stored partial coplot data.
-R> 
-R> # # Partial coplot
-R> ggplot(partial_coplot_Boston, aes(x=lstat, y=yhat, col=group))+
-R+   geom_point()+
-R+   geom_smooth(se=FALSE, alpha=.25)+
-R+   labs(x=st.labs["lstat"], y=st.labs["medv"],
-R+        color="Room", shape="Room")+
-R+   scale_color_brewer(palette="Set1")
-\end{CodeInput}
+\textbackslash{}begin\{CodeInput\} R\textgreater{} \# Load the stored
+partial coplot data. R\textgreater{} R\textgreater{} \# \# Partial
+coplot R\textgreater{} ggplot(partial\_coplot\_Boston, aes(x=lstat,
+y=yhat, col=group))+ R+ geom\_point()+ R+ geom\_smooth(se=FALSE,
+alpha=.25)+ R+ labs(x=st.labs{[}``lstat''{]}, y=st.labs{[}``medv''{]},
+R+ color=``Room'', shape=``Room'')+ R+
+scale\_color\_brewer(palette=``Set1'') \textbackslash{}end\{CodeInput\}
+
 \begin{figure}
 
 {\centering \includegraphics{Regression-rfsrc_files/figure-latex/prtl-coplots-1} 
@@ -1164,7 +1098,8 @@ R+   scale_color_brewer(palette="Set1")
 
 \caption[Partial Coplots]{Partial Coplots. Risk adjusted predicted median value as a function of Lower Status, conditional on groups of average number of rooms.}\label{fig:prtl-coplots}
 \end{figure}
-\end{CodeChunk}
+
+\textbackslash{}end\{CodeChunk\}
 
 Unlike variable dependence coplots, we do not need to use a panel format
 for partial dependence coplots because we are looking risk adjusted
@@ -1190,27 +1125,24 @@ on membership within the 6 groups of \texttt{lstat} ``intervals'', and
 cache the following \texttt{gg\_partial\_coplot} data call, and plot the
 results with the \texttt{plot.gg\_variable} call:
 
-\begin{CodeChunk}
+\textbackslash{}begin\{CodeChunk\}
 
-\begin{CodeInput}
-R> partial_coplot_Boston2 <- gg_partial_coplot(rfsrc_Boston, xvar="rm", 
-R+                                             groups=lstat_grp,
-R+                                             show.plots=FALSE)
-\end{CodeInput}
-\end{CodeChunk}
+\textbackslash{}begin\{CodeInput\} R\textgreater{}
+partial\_coplot\_Boston2 \textless{}- gg\_partial\_coplot(rfsrc\_Boston,
+xvar=``rm'', R+ groups=lstat\_grp, R+ show.plots=FALSE)
+\textbackslash{}end\{CodeInput\} \textbackslash{}end\{CodeChunk\}
 
-\begin{CodeChunk}
+\textbackslash{}begin\{CodeChunk\}
 
-\begin{CodeInput}
-R> # Partial coplot
-R> #plot(partial_coplot_Boston2)+ ## again plot.gg_partial_coplot
-R> ggplot(partial_coplot_Boston2, aes(x=rm, y=yhat, col=group))+
-R+   geom_point()+
-R+   geom_smooth(se=FALSE)+
-R+   labs(x=st.labs["rm"], y=st.labs["medv"], 
-R+        color="Lower Status", shape="Lower Status")+
-R+   scale_color_brewer(palette="Set1")
-\end{CodeInput}
+\textbackslash{}begin\{CodeInput\} R\textgreater{} \# Partial coplot
+R\textgreater{} \#plot(partial\_coplot\_Boston2)+ \#\# again
+plot.gg\_partial\_coplot R\textgreater{}
+ggplot(partial\_coplot\_Boston2, aes(x=rm, y=yhat, col=group))+ R+
+geom\_point()+ R+ geom\_smooth(se=FALSE)+ R+ labs(x=st.labs{[}``rm''{]},
+y=st.labs{[}``medv''{]}, R+ color=``Lower Status'', shape=``Lower
+Status'')+ R+ scale\_color\_brewer(palette=``Set1'')
+\textbackslash{}end\{CodeInput\}
+
 \begin{figure}
 
 {\centering \includegraphics{Regression-rfsrc_files/figure-latex/prtl-coplots2-1} 
@@ -1219,7 +1151,8 @@ R+   scale_color_brewer(palette="Set1")
 
 \caption[Partial Coplots]{Partial Coplots. Risk adjusted predicted median value as a function of average number of rooms, conditional on groups of percentage of lower status population.}\label{fig:prtl-coplots2}
 \end{figure}
-\end{CodeChunk}
+
+\textbackslash{}end\{CodeChunk\}
 
 This figure indicates that the median home value does not change much
 until the \texttt{rm} increases above 6.5, then flattens again above 8,
@@ -1231,7 +1164,8 @@ curves along the percentage of \texttt{lstat} groupings, as again, we
 chose these groups to have similar sized populations, not to be evenly
 spaced along the \texttt{lstat} variable.
 
-\section{Partial plot surfaces}\label{partial-plot-surfaces}
+\hypertarget{partial-plot-surfaces}{%
+\section{Partial plot surfaces}\label{partial-plot-surfaces}}
 
 Visualizing two dimensional projections of three dimensional data is
 difficult, though there are tools available to make the data more
@@ -1253,15 +1187,12 @@ values, and generate a partial plot curve for each point. For these
 partial plots, we will evaluate the risk adjusted median home value over
 \texttt{npts=50} points along the \texttt{lstat} variable. This code
 block finds 50 \texttt{rm} values evenly spaced along the distribution
-of \texttt{rm}.
+of \texttt{rm}. \textbackslash{}begin\{CodeChunk\}
 
-\begin{CodeChunk}
-
-\begin{CodeInput}
-R> # Find the quantile points to create 50 cut points
-R> rm_pts <- quantile_pts(rfsrc_Boston$xvar$rm, groups=49, intervals = TRUE)
-\end{CodeInput}
-\end{CodeChunk}
+\textbackslash{}begin\{CodeInput\} R\textgreater{} \# Find the quantile
+points to create 50 cut points R\textgreater{} rm\_pts \textless{}-
+quantile\_pts(rfsrc\_Boston\(xvar\)rm, groups=49, intervals = TRUE)
+\textbackslash{}end\{CodeInput\} \textbackslash{}end\{CodeChunk\}
 
 We use the following data call to generate the partial plots with the
 \texttt{randomForestSRC::plot.variable} call. Within the lapply call, we
@@ -1278,28 +1209,16 @@ converts the \texttt{plot.variable} objects to \texttt{gg\_partial}
 objects, attaches numeric values for the \texttt{rm} variable, and
 generates the contour plot.
 
-\begin{CodeChunk}
+\textbackslash{}begin\{CodeChunk\}
 
-\begin{CodeInput}
-R> # Generate the gg_partial_coplot data object
-R> system.time(partial_Boston_surf <- lapply(rm_pts, function(ct){
-R+   rfsrc_Boston$xvar$rm <- ct
-R+   plot.variable(rfsrc_Boston, xvar = "lstat", time = 1,
-R+                 npts = 50, show.plots = FALSE, 
-R+                 partial = TRUE)
-R+ }))
-\end{CodeInput}
-
-\begin{CodeOutput}
-   user  system elapsed 
-  93.16    0.00   93.19 
-\end{CodeOutput}
-
-\begin{CodeInput}
-R> #     user   system  elapsed 
-R> # 1109.641   76.516 1199.732 
-\end{CodeInput}
-\end{CodeChunk}
+\textbackslash{}begin\{CodeInput\} R\textgreater{} \# Generate the
+gg\_partial\_coplot data object R\textgreater{}
+system.time(partial\_Boston\_surf \textless{}- lapply(rm\_pts,
+function(ct)\{ R+ rfsrc\_Boston\(xvar\)rm \textless{}- ct R+
+plot.variable(rfsrc\_Boston, xvar = ``lstat'', time = 1, R+ npts = 50,
+show.plots = FALSE, R+ partial = TRUE) R+ \})) R\textgreater{} \# user
+system elapsed R\textgreater{} \# 1109.641 76.516 1199.732
+\textbackslash{}end\{CodeInput\} \textbackslash{}end\{CodeChunk\}
 
 \begin{CodeChunk}
 \begin{figure}
@@ -1349,7 +1268,8 @@ we can see how the predicted values change as we move around the map of
 careful though, as partial plots average over values on the surface that
 are note supported by actual observations.
 
-\section{Conclusion}\label{conclusion}
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
 
 In this vignette, we have demonstrated the use of the
 \pkg{ggRandomForests} package to explore a regression random forest
@@ -1370,7 +1290,7 @@ way, we've demonstrated the use of additional commands from the
 \pkg{ggRandomForests}.
 
 \renewcommand\refname{References}
-\bibliography{ggRandomForestsRMD}
+\bibliography{ggRandomForestsRMD.bib}
 
 
 \end{document}
