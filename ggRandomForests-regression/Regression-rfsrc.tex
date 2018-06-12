@@ -61,6 +61,8 @@ for both prediction and information retrieval in regression settings.
 \Address{
   }
 
+% Pandoc header
+
 \usepackage{natbib}
 \usepackage{booktabs}
 \usepackage{longtable}
@@ -106,6 +108,7 @@ figures into document text. Throughout this document, \texttt{R} code
 will be displayed in \emph{code blocks} as shown below. This code block
 loads the \texttt{R} packages required to run the source code listed in
 code blocks throughout the remainder of this document.
+
 \textbackslash{}begin\{CodeChunk\}
 
 \textbackslash{}begin\{CodeInput\} R\textgreater{}
@@ -403,7 +406,7 @@ calls are included in comments within code blocks.
 \textbackslash{}begin\{CodeInput\} R\textgreater{} \# Load the data,
 from the call: R\textgreater{} rfsrc\_Boston \textless{}-
 rfsrc(medv\textasciitilde{}., data=Boston, R+ importance = TRUE,
-tree.err = TRUE) R\textgreater{} R\textgreater{} \# print the forest
+err.block = 5) R\textgreater{} R\textgreater{} \# print the forest
 summary R\textgreater{} rfsrc\_Boston \textbackslash{}end\{CodeInput\}
 \textbackslash{}end\{CodeChunk\}
 
@@ -445,8 +448,10 @@ display.
 
 \textbackslash{}begin\{CodeInput\} R\textgreater{} \# Plot the OOB
 errors against the growth of the forest. R\textgreater{} gg\_e
-\textless{}- gg\_error(rfsrc\_Boston) R\textgreater{} plot(gg\_e)
-\textbackslash{}end\{CodeInput\}
+\textless{}- gg\_error(rfsrc\_Boston) R\textgreater{} gg\_e \textless{}-
+gg\_e \%\textgreater{}\% filter(!is.na(error)) R\textgreater{}
+class(gg\_e) \textless{}- c(``gg\_error'',class(gg\_e)) R\textgreater{}
+plot(gg\_e) \textbackslash{}end\{CodeInput\}
 
 \begin{figure}
 

@@ -57,7 +57,9 @@ This document is a package vignette for the \pkg{ggRandomForests} package for "V
 The vignette is a tutorial for using the \pkg{ggRandomForests} package with the \pkg{randomForestSRC} package for building and post-processing random forests for regression settings. In this tutorial, we explore a random forest for regression model constructed for the Boston housing data set [@Harrison:1978, @Belsley:1980], available in the `MASS` package [@mass:2002]. We grow a random forest and demonstrate how \pkg{ggRandomForests} can be used when determining how the response depends on predictive variables within the model. The tutorial demonstrates the design and usage of many of \pkg{ggRandomForests} functions and features and also how to modify and customize the resulting `ggplot` graphic objects along the way.
 
 The vignette is written in \LaTeX using the `knitr` package (http://CRAN.R-project.org/package=knitr][@Xie:2015, @Xie:2014,@Xie:2013], which facilitates weaving `R` [@rcore] code, results and figures into document text. Throughout this document, `R` code will be displayed in *code blocks* as shown below. This code block loads the `R` packages required to run the source code listed in code blocks throughout the remainder of this document.
+
 ```{r libraries, echo=TRUE}
+
 ################## Load packages ##################
 library("ggplot2")         # Graphics engine
 library("RColorBrewer")    # Nice color palettes
@@ -80,6 +82,7 @@ event.labels <- c(FALSE, TRUE)
 
 ## We want red for death events, so reorder this set.
 strCol <- brewer.pal(3, "Set1")[c(2,1,3)]
+
 ```
 
 This vignette is available within the \pkg{ggRandomForests} package on the Comprehensive R Archive Network (CRAN) ({)http://cran.r-project.org) [@rcore]. Once the package has been installed, the vignette can be viewed directly from within `R` with the following command:
@@ -204,7 +207,7 @@ Because growing random forests are computationally expensive, and the \pkg{ggRan
 ```{r randomforest, echo=TRUE}
 # Load the data, from the call:
 rfsrc_Boston <- rfsrc(medv~., data=Boston, 
-                      importance = TRUE, tree.err = TRUE)
+                      importance = TRUE, err.block = 5)
 
 # print the forest summary
 rfsrc_Boston
@@ -221,6 +224,8 @@ The `gg_error` function operates on the `randomForestSRC::rfsrc` object to extra
 ```{r error, echo=TRUE, fig.cap="Random forest generalization error. OOB error convergence along the number of trees in the forest."}
 # Plot the OOB errors against the growth of the forest.
 gg_e <- gg_error(rfsrc_Boston)
+gg_e <- gg_e %>% filter(!is.na(error))
+class(gg_e) <- c("gg_error",class(gg_e))
 plot(gg_e)
 ```
 
